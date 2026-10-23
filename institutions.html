@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nelview for Institutions</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+</head>
+<body data-page="inst">
+<div data-site-header></div>
+<main>
+<section class="hero" style="padding-top:88px" data-screen-label="Institutions hero">
+<div class="grid-bg"></div>
+<div class="wrap hero-grid">
+<div>
+<h1 class="display" style="font-size:clamp(44px,6vw,80px)">Rigorous review for every student.</h1>
+<p class="lead">Give every student the structured feedback only a few ever get, measured against your own criteria and pass marks. Supervisors see who needs them, and no one submits to a predatory journal again.</p>
+<div class="row"><a class="btn btn-p btn-lg" href="contact.html?topic=institution">Set up your institution<span data-ic="arrow"></span></a><a class="btn btn-g btn-lg" href="contact.html">Book a demo</a></div>
+<div class="micro"><span data-ic="check">Students never pay</span><span data-ic="check">Live in under a week</span><span data-ic="lock">SSO and data residency</span></div>
+</div>
+<div class="mock">
+<div class="mock-bar"><i></i><i></i><i></i><span class="u">uct.nelview.com/admin/programmes</span></div>
+<div class="app-main">
+<div class="row" style="justify-content:space-between"><div><div class="muted" style="font-size:12.5px">Review configuration</div><div style="font-size:18px;font-weight:620;letter-spacing:-.02em">MSc Public Health</div></div><span class="tag b">412 seats</span></div>
+<div class="crit">
+<div class="c">Methodology<div class="bar"><span style="width:30%"></span></div><b>30%</b></div>
+<div class="c">Literature &amp; theory<div class="bar"><span style="width:25%"></span></div><b>25%</b></div>
+<div class="c">Ethics (local IRB)<div class="bar"><span style="width:25%"></span></div><b>25%</b></div>
+<div class="c">Writing &amp; structure<div class="bar"><span style="width:20%"></span></div><b>20%</b></div>
+</div>
+<div class="recs"><div class="r"><span class="tag g">Pass</span><div><b>Pass mark: 65</b>Below 65 routes to supervisor automatically</div></div><div class="r"><span class="tag y">Bands</span><div><b>0–49 · 50–64 · 65–79 · 80+</b>Fail · Revise · Pass · Distinction</div></div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="sec-sm prow-s" data-screen-label="Photo row"><div class="wrap"><div class="prow prow-3"><div class="photo t"><img src="assets/web/microscope-y.jpg" alt="Student working at a microscope" loading="lazy" decoding="async" width="1600" height="2031"></div><div class="photo "><img src="assets/web/lab-notes.jpg" alt="Researcher writing up lab results" loading="lazy" decoding="async" width="1600" height="1067"></div><div class="photo t"><img src="assets/web/test-tubes.jpg" alt="Samples being prepared in test tubes" loading="lazy" decoding="async" width="1600" height="1275"></div></div></div></section>
+
+
+
+<section class="sec" data-screen-label="Student journey">
+<div class="wrap">
+<div class="sec-head"><h2 class="h2">From first draft to final export, in one flow.</h2><p class="lead">Each step is gated by your rules, so work only reaches supervisors and experts when it's ready.</p></div>
+<div class="flow">
+<div><span class="n">01</span><span class="ico" data-ic="grad"></span><b>Join</b><p>Students join with their university email and land in their programme.</p></div>
+<div><span class="n">02</span><span class="ico" data-ic="cpu"></span><b>AI review</b><p>Scored on your criteria. Unlimited rounds until they clear the pass mark.</p></div>
+<div><span class="n">03</span><span class="ico" data-ic="edit"></span><b>Supervisor</b><p>Supervisors comment, approve or return, with the AI report attached.</p></div>
+<div><span class="n">04</span><span class="ico" data-ic="users"></span><b>Expert review</b><p>Optional external review from vetted experts for high-stakes work.</p></div>
+<div><span class="n">05</span><span class="ico" data-ic="send"></span><b>Export</b><p>Formatted for the target journal or your thesis template.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec alt" id="config" data-screen-label="Programme configurator">
+<div class="wrap">
+<div class="split-head"><h2 class="h2">Different programmes. Different bars.</h2><p class="lead">A final-year project and a PhD chapter shouldn't be judged the same way. Set criteria, weights, pass marks and bands for each programme.</p></div>
+<div class="tabs" id="progTabs"><button class="on" data-k="bsc">BSc final project</button><button data-k="msc">MSc thesis</button><button data-k="phd">PhD chapter</button></div>
+<div class="cfg">
+<div class="mock"><div class="mock-bar"><span id="cfgTitle" style="color:var(--ink);font-weight:600">BSc final project</span><span class="tag b" style="margin-left:auto" id="cfgSeats"></span></div><div class="app-main"><div class="muted" style="font-size:12.5px">Criteria and weights</div><div class="crit" id="cfgCrit"></div></div></div>
+<div class="cfg-side">
+<div class="card"><div class="muted" style="font-size:13px">Pass mark</div><div class="cfg-pm" id="cfgPm">55</div><div class="cfg-scale"><i id="cfgFill"></i><b id="cfgMark"></b></div><p style="font-size:14px" id="cfgRoute"></p></div>
+<div class="card"><div class="muted" style="font-size:13px">Score bands</div><div class="cfg-bands" id="cfgBands"></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec" data-screen-label="Capabilities">
+<div class="wrap">
+<div class="sec-head"><h2 class="h2">Configure once. Every review follows your rules.</h2></div>
+<div class="feats">
+<div class="feat"><span class="ico lg" data-ic="sliders" data-s="20"></span><h4>Custom review criteria</h4><p>Define criteria and weights per faculty or programme. Nelview scores every document against them.</p></div>
+<div class="feat"><span class="ico lg" data-ic="target" data-s="20"></span><h4>Pass marks by programme</h4><p>A BSc project and a PhD chapter shouldn't clear the same bar. Set each independently.</p></div>
+<div class="feat"><span class="ico lg" data-ic="chart" data-s="20"></span><h4>Score bands</h4><p>Name your own bands (Fail, Revise, Pass, Distinction) and what happens at each.</p></div>
+<div class="feat"><span class="ico lg" data-ic="users" data-s="20"></span><h4>Seats, not invoices</h4><p>License seats centrally. Assign them by programme. Students never see a paywall.</p></div>
+<div class="feat"><span class="ico lg" data-ic="shield" data-s="20"></span><h4>Predatory-journal protection</h4><p>Every target venue is checked against DOAJ and COPE before a student submits.</p></div>
+<div class="feat"><span class="ico lg" data-ic="lock" data-s="20"></span><h4>SSO, LMS and security</h4><p>SAML or Google SSO, Moodle and Canvas integration, and documents never used for training.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec alt" id="supervisors" data-screen-label="Supervisors">
+<div class="wrap grid2" style="gap:64px;align-items:center">
+<div class="mock">
+<div class="mock-bar">Supervisor queue · Dr. Fatima Bello</div>
+<div class="app-main">
+<div class="recs" style="margin-top:0">
+<div class="r"><span class="tag y">63</span><div><b>Kwame A. · Thesis chapter 3</b>2 below pass mark · statistics flagged</div></div>
+<div class="r"><span class="tag g">72</span><div><b>Ama O. · Research proposal</b>Cleared pass mark · ready to approve</div></div>
+<div class="r"><span class="tag g">81</span><div><b>Tendai M. · Journal manuscript</b>Distinction band · expert review requested</div></div>
+</div>
+<div class="row" style="margin-top:16px"><a class="btn btn-p btn-sm">Approve</a><a class="btn btn-g btn-sm">Return with comments</a></div>
+</div>
+</div>
+<div><h2 class="h2">Your time goes to the thinking.</h2><p class="lead" style="margin-top:20px">Students arrive with the mechanical issues already fixed. You see scores, trends and flags before you open a single file.</p><ul class="checks"><li data-ic="check">Queue sorted by who needs you most</li><li data-ic="check">Approve graduation moves to personal accounts</li><li data-ic="check">Pull in a vetted external expert with one request</li></ul><a class="btn btn-d" href="contact.html">Book a demo<span data-ic="arrow"></span></a></div>
+</div>
+</section>
+
+<section class="sec" data-screen-label="Image band">
+<div class="wrap"><div class="imgband">
+<div class="photo"><img src="assets/gen/beta-hero-image.png" alt="Students working in a university lab" decoding="async" width="800" height="1000" loading="lazy"></div>
+<div class="tx"><h2 class="h2" style="font-size:clamp(30px,3.4vw,44px)">Start with one department. Scale to the whole university.</h2><p class="lead">Most partners pilot with a single programme for one semester, then roll out faculty by faculty.</p><div class="row"><a class="btn btn-p" href="contact.html">Plan a pilot<span data-ic="arrow"></span></a></div></div>
+</div></div>
+</section>
+
+<section class="sec alt" data-screen-label="Onboarding">
+<div class="wrap">
+<div class="split-head"><div><h2 class="h2">Live in about a week.</h2></div><p class="lead">Sign up online in seven short steps. We verify your institution, then you invite staff and students.</p></div>
+<div class="steps">
+<div class="step"><span class="n">Day 1</span><h3>Sign up and verify</h3><p>Register your institution with an official domain. We verify within one working day.</p></div>
+<div class="step"><span class="n">Day 2–4</span><h3>Configure</h3><p>Set faculties, programmes, criteria, pass marks and bands. Start from our templates.</p></div>
+<div class="step"><span class="n">Day 5–7</span><h3>Invite and launch</h3><p>Connect SSO, invite supervisors and assign seats. Students start reviewing.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec" data-screen-label="Quote">
+<div class="wrap"><div class="qband"><p class="bigquote">"Journal Check stopped one of my students submitting to a predatory journal. That alone makes it essential for our department."</p><div class="person"><span class="av in" style="background:#15803D">FB</span><div><b>Dr. Fatima Bello</b><span>Lecturer &amp; Supervisor</span></div></div></div></div>
+</section>
+
+<section class="sec alt" data-screen-label="Institutions FAQ">
+<div class="wrap faq-grid">
+<div><h2 class="h2">Questions from universities</h2><p class="muted" style="margin-top:20px">Something else? <a href="contact.html">Book a call</a>.</p></div>
+<div class="faq">
+<details open><summary>How is institutional pricing calculated?</summary><div class="a">Per licensed seat per academic year, with volume tiers. Supervisors and admins are free. Pilots for a single programme are available for one semester.</div></details>
+<details><summary>Do students ever pay?</summary><div class="a">No. Students on a licensed seat get unlimited AI reviews under your criteria and never see a paywall.</div></details>
+<details><summary>Which systems do you integrate with?</summary><div class="a">SAML and Google SSO, plus Moodle and Canvas. Student rosters can be imported by CSV or synced from your LMS.</div></details>
+<details><summary>Where is our data stored?</summary><div class="a">Documents are processed only to produce reviews, never used for training, and never sold. Data residency options are available for institutions that need them.</div></details>
+<details><summary>What happens when students graduate?</summary><div class="a">With supervisor approval, graduates can move their projects to a personal Nelview account and keep their review history. Their seat returns to your pool.</div></details>
+</div>
+</div>
+</section>
+
+<section class="sec"><div class="wrap"><div class="cta">
+<h2 class="display" style="font-size:clamp(38px,5.4vw,68px);max-width:16ch;margin:0 auto">Bring Nelview to your university.</h2>
+<p class="lead">Pilot with one department, then scale across the institution.</p>
+<div class="row"><a class="btn btn-w btn-lg" href="contact.html?topic=institution">Set up your institution<span data-ic="arrow"></span></a><a class="btn btn-o btn-lg" href="contact.html">Book a demo</a></div>
+</div></div></section>
+</main>
+<div data-site-footer></div>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<script>
+(function(){var D={
+bsc:{t:'BSc final project',seats:'1,240 seats',pm:55,c:[['Structure & writing',30],['Literature review',25],['Methodology',25],['Ethics',20]],b:[['0–39','Fail','r'],['40–54','Revise','y'],['55–69','Pass','g'],['70+','First class','b']],r:'Below 55 returns to the student with AI feedback. Supervisors see it at 55+.'},
+msc:{t:'MSc thesis',seats:'412 seats',pm:65,c:[['Methodology',30],['Literature & theory',25],['Ethics (local IRB)',25],['Writing & structure',20]],b:[['0–49','Fail','r'],['50–64','Revise','y'],['65–79','Pass','g'],['80+','Distinction','b']],r:'Below 65 routes to the supervisor automatically with flagged sections.'},
+phd:{t:'PhD chapter',seats:'186 seats',pm:75,c:[['Novelty & contribution',30],['Methodology',30],['Statistics',20],['Ethics & integrity',20]],b:[['0–59','Major revision','r'],['60–74','Minor revision','y'],['75–89','Ready for committee','g'],['90+','Publication-ready','b']],r:'75+ unlocks committee review. 85+ suggests an external expert.'}};
+function ren(k){var d=D[k];document.getElementById('cfgTitle').textContent=d.t;document.getElementById('cfgSeats').textContent=d.seats;document.getElementById('cfgPm').textContent=d.pm;
+document.getElementById('cfgCrit').innerHTML=d.c.map(function(c){return "<div class='c'>"+c[0].replace('&','&amp;')+"<div class='bar'><span style='width:"+(c[1]*2.5)+"%'></span></div><b>"+c[1]+"%</b></div>";}).join('');
+document.getElementById('cfgFill').style.width=d.pm+'%';document.getElementById('cfgMark').style.left=d.pm+'%';document.getElementById('cfgRoute').textContent=d.r;
+document.getElementById('cfgBands').innerHTML=d.b.map(function(b){return "<div><span class='tag "+b[2]+"'>"+b[0]+"</span><b>"+b[1]+"</b></div>";}).join('');}
+document.querySelectorAll('#progTabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#progTabs button').forEach(function(x){x.classList.toggle('on',x===b)});ren(b.getAttribute('data-k'));};});ren('bsc');})();
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact &amp; demo · Nelview</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+</head>
+<body data-page="contact">
+<div data-site-header></div>
+<main>
+<section class="page-hero" data-screen-label="Contact">
+<div class="grid-bg"></div>
+<div class="wrap grid2" style="gap:64px;align-items:start;position:relative">
+<div>
+
+<h1 class="display" style="font-size:clamp(44px,6vw,76px)">See Nelview on your own research.</h1>
+<p class="lead">For universities, departments, labs and research offices. We'll run a live review of a paper from your field and answer anything on pricing, pilots or rollout.</p>
+<ul class="checks"><li data-ic="check">A live review of a sample paper in your field</li><li data-ic="check">How seats, criteria and pass marks work</li><li data-ic="check">Pilot and pricing options</li><li data-ic="check">Security and data questions</li></ul>
+<div class="divider" style="margin:36px 0"></div>
+<div class="grid2">
+<div class="feat"><span class="ico" data-ic="mail"></span><h4>Email</h4><a href="mailto:team@nelview.com">team@nelview.com</a></div>
+<div class="feat"><span class="ico" data-ic="phone"></span><h4>Phone</h4><a href="tel:+233256809108">+233 25 680 9108</a></div>
+<div class="feat"><span class="ico" data-ic="pin"></span><h4>Office</h4><p>Accra, Ghana</p></div>
+<div class="feat"><span class="ico" data-ic="users"></span><h4>Support</h4><p>Already a user? Use in-app chat.</p></div>
+</div>
+</div>
+<div class="card" style="padding:36px;box-shadow:0 30px 60px -30px rgba(10,13,20,.22)">
+<div class="ct-tabs" role="tablist"><button type="button" class="on" data-ct="demo">Institution demo</button><button type="button" data-ct="msg">General contact</button></div>
+<form class="form" data-done="demoDone" data-stage="Demo request" id="ctForm"><input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<div class="fld"><label>Full name</label><input name="name" placeholder="Dr. Amara Okafor" required></div>
+<div class="two"><div class="fld"><label>Work email</label><input name="email" type="email" placeholder="you@university.edu" required></div><div class="fld"><label>Institution</label><input name="institution" placeholder="University of Lagos" required></div></div>
+<div class="two"><div class="fld"><label>I am a…</label><select name="role"><option>Department / faculty lead</option><option>Research office / admin</option><option>Professor / supervisor</option><option>Librarian</option><option>Researcher</option><option>Student</option><option>Other</option></select></div><div class="fld"><label>Team size</label><select name="size"><option>2–10</option><option>11–50</option><option>51–200</option><option>200–1,000</option><option>1,000+</option></select></div></div>
+<div class="fld ct-msg" style="display:none"><label>Topic</label><select name="topic"><option>General question</option><option>Partnership</option><option>Press &amp; media</option><option>Support</option><option>Funding / Research Pledge</option></select></div>
+<div class="fld"><label id="ctMsgL">What would you like to see?</label><textarea name="message" placeholder="e.g. A pilot for 30 MSc students in public health." required></textarea></div>
+<button class="btn btn-p btn-lg" type="submit" id="ctBtn">Request a demo<span data-ic="arrow"></span></button>
+<p class="muted" style="font-size:13.5px">We reply within 1–2 working days. No spam.</p>
+</form>
+<div class="done" id="demoDone"><span class="ico lg" data-ic="check" data-s="22"></span><h3 class="h3">Request received.</h3><p class="muted" style="margin-top:10px">Thanks, <b data-fill="name" style="color:var(--ink)">there</b>. We'll email <b data-fill="email" style="color:var(--ink)"></b> within 1–2 working days to schedule your walkthrough.</p></div>
+</div>
+</div>
+</section>
+<section class="sec-sm" style="padding-top:0" data-screen-label="Photo band"><div class="wrap"><div class="pband"><div class="photo"><img src="assets/web/microscope-w.jpg" alt="Researcher at a microscope" loading="lazy" decoding="async" width="1600" height="2133"></div><p class="pband-t" data-i18n="pband2">Built with researchers, for the <em>institutions</em> that train them.</p></div></div></section>
+
+<section class="sec alt" data-screen-label="Other ways">
+<div class="wrap">
+<div class="sec-head"><h2 class="h2">Not here for a demo?</h2></div>
+<div class="grid3">
+<a class="card" href="waitlist.html" style="color:var(--ink)"><span class="ico lg" data-ic="file" data-s="20"></span><h3>Researchers</h3><p>Join the private beta. Help is built into the app.</p><span class="blue" style="font-weight:560;display:inline-flex;gap:6px;align-items:center;margin-top:auto">Get started<span data-ic="arrow" data-s="15"></span></span></a>
+<a class="card" href="apply.html" style="color:var(--ink)"><span class="ico lg" data-ic="award" data-s="20"></span><h3>Expert reviewers</h3><p>Apply to review and earn in your field.</p><span class="blue" style="font-weight:560;display:inline-flex;gap:6px;align-items:center;margin-top:auto">Apply to review<span data-ic="arrow" data-s="15"></span></span></a>
+<a class="card" href="mailto:team@nelview.com" style="color:var(--ink)"><span class="ico lg" data-ic="mail" data-s="20"></span><h3>Partnerships &amp; press</h3><p>Funders, journals, publishers and media.</p><span class="blue" style="font-weight:560;display:inline-flex;gap:6px;align-items:center;margin-top:auto">team@nelview.com<span data-ic="arrow" data-s="15"></span></span></a>
+</div>
+</div>
+</section>
+</main>
+<div data-site-footer></div>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+<script>(function(){var f=document.getElementById('ctForm');if(!f)return;var tabs=document.querySelectorAll('[data-ct]'),demo=f.querySelectorAll('select[name=role],select[name=size]'),msg=f.querySelectorAll('.ct-msg');
+function set(k){tabs.forEach(function(t){t.classList.toggle('on',t.getAttribute('data-ct')===k)});var d=k==='demo';f.setAttribute('data-stage',d?'Demo request':'Contact message');
+demo.forEach(function(s){var w=s.closest('.fld');if(w)w.style.display=d?'':'none'});msg.forEach(function(m){m.style.display=d?'none':''});
+document.getElementById('ctMsgL').textContent=d?'What would you like to see?':'Your message';var b=document.getElementById('ctBtn');b.firstChild.nodeValue=d?'Request a demo':'Send message';
+var inst=f.querySelector('[name=institution]');if(inst)inst.required=d;var dn=document.getElementById('demoDone');if(dn){var p=dn.querySelector('p');var h=dn.querySelector('h3');if(h)h.textContent=d?'Request received.':'Message sent.';if(p){if(!p.__o)p.__o=p.innerHTML;p.innerHTML=d?p.__o:'Thanks, <b data-fill="name" style="color:var(--ink)">there</b>. We\u2019ll reply to <b data-fill="email" style="color:var(--ink)"></b> within 1\u20132 working days.'}}}
+tabs.forEach(function(t){t.onclick=function(){set(t.getAttribute('data-ct'))}});
+var q=new URLSearchParams(location.search).get('topic');if(q==='contact'||q==='general')set('msg');
+f.addEventListener('submit',function(){setTimeout(function(){if(f.style.display==='none'){var t=document.querySelector('.ct-tabs');if(t)t.style.display='none'}},0);if(f.getAttribute('data-stage')==='Contact message'){var t=f.querySelector('[name=topic]');window.__ctTopic=t?t.value:''}},true);})();</script>
+</body>
+</html>

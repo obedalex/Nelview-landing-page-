@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nelview · Research Review Center mobile demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>.rc-phone *,.rc-phone *::before,.rc-phone *::after{box-sizing:border-box}html,body{margin:0;height:100%;background:#0E1411}a{color:#15803D}a:hover{color:#0F3B2A}</style>
+<script>window.OM_SCENES = '[{"name":"Logo","dur":3,"desc":"Nelview mark assembles and the wordmark reveals"},{"name":"Hook","dur":3.2,"desc":"Kinetic headline builds word by word, then the phone arrives"},{"name":"Intro","dur":3,"desc":"The phone rises in with the Nelview promise"},{"name":"Pick","dur":5,"desc":"The researcher taps Journal Manuscript and continues"},{"name":"Upload","dur":4.5,"desc":"A PDF drops in, uploads, and Publication review is chosen"},{"name":"Analyze","dur":4.5,"desc":"Six review steps tick off as the ring fills"},{"name":"Result","dur":5.5,"desc":"Camera zooms on the 82/100 score as criteria bars fill"},{"name":"Fixes","dur":5,"desc":"The report scrolls to prioritised fixes and expert review"},{"name":"Outro","dur":4,"desc":"Phone slides away to the closing line and waitlist call"}]';</script>
+<script>window.__omEmbed=/[?&]embed/.test(location.search);if(window.__omEmbed){document.write('<style>[data-omelette-chrome]{display:none!important}html,body{background:#F4F5F6!important;overflow:hidden}</style>')}</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "motionEditor": true,
+  "backdrop": "Blend",
+  "sound": false,
+  "dynamicColor": true
+}/*EDITMODE-END*/;</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="animations-v3.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="rc-screens.jsx"></script>
+<script type="text/babel">
+const W=1920,H=1080;
+function useMotion(T){
+  const mk=(ease)=>(s,d)=>animate({from:0,to:1,start:s,end:s+d,ease})(T);
+  return {enter:mk(Easing.easeOutCubic),draw:mk(Easing.easeInOutCubic),pop:mk(Easing.easeOutBack)};
+}
+const PALS={
+  Logo:{bg:'#F4F5F6',grid:'#E4E6E9',blob:'#0F3B2A',ring:'#F2A516',ink:'#14231B',ink2:'#3E4A42',acc:'#15803D'},
+  Hook:{bg:'#F4F5F6',grid:'#E4E6E9',blob:'#0F3B2A',ring:'#F2A516',ink:'#14231B',ink2:'#3E4A42',acc:'#15803D'},
+  Intro:{bg:'#E3F3E8',grid:'#CFE7D7',blob:'#0F3B2A',ring:'#F2A516',ink:'#14231B',ink2:'#3E4A42',acc:'#15803D'},
+  Pick:{bg:'#FBF1DA',grid:'#F1E1BC',blob:'#0F3B2A',ring:'#1BB35C',ink:'#14231B',ink2:'#4A4436',acc:'#8A5A00'},
+  Upload:{bg:'#E6EEF0',grid:'#D3DFE2',blob:'#15803D',ring:'#F2A516',ink:'#14231B',ink2:'#3E4A42',acc:'#15803D'},
+  Analyze:{bg:'#0F3B2A',grid:'#1A4D38',blob:'#1BB35C',ring:'#F2A516',ink:'#FFFFFF',ink2:'#C9DBCF',acc:'#F2A516'},
+  Result:{bg:'#F2A516',grid:'#E69A0C',blob:'#0F3B2A',ring:'#FFFFFF',ink:'#14231B',ink2:'#2E2A1E',acc:'#0F3B2A'},
+  Fixes:{bg:'#1BB35C',grid:'#27BE67',blob:'#0F3B2A',ring:'#F2A516',ink:'#0E1411',ink2:'#10271B',acc:'#0F3B2A'},
+  Outro:{bg:'#F4F5F6',grid:'#E4E6E9',blob:'#0F3B2A',ring:'#F2A516',ink:'#14231B',ink2:'#3E4A42',acc:'#15803D'}};
+const ORDER=['Logo','Hook','Intro','Pick','Upload','Analyze','Result','Fixes','Outro'];
+const hx=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
+const mixC=(a,b,t)=>{const A=hx(a),B=hx(b);return 'rgb('+A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')+')'};
+function palAt(T,C,on){if(!on)return PALS.Logo;let i=0;for(let j=0;j<ORDER.length;j++)if(T>=C[ORDER[j]]-.7)i=j;
+  const cur=PALS[ORDER[i]],prev=PALS[ORDER[Math.max(0,i-1)]];const t=i?Easing.easeInOutCubic(clamp((T-(C[ORDER[i]]-.7))/1.4,0,1)):1;
+  const o={};for(const k in cur)o[k]=mixC(prev[k],cur[k],t);return o;}
+const COPY=[
+  ['Intro','Nelview · Research Review Center','Your ultimate pre-submission audit.','Know your paper is ready before a reviewer does.'],
+  ['Pick','01','Pick what you\u2019re submitting.','Six document types, each judged by the framework that decides its fate.'],
+  ['Upload','02','Drop in your draft.','PDF or Word. Choose how rigorous the review should be.'],
+  ['Analyze','03','Nelview reads it like an editor.','Structure, methods, statistics and ethics, in minutes, not months.'],
+  ['Result','04','One clear verdict.','A 0\u2013100 readiness score, with the criteria behind it.'],
+  ['Fixes','05','Know exactly what to fix.','Prioritised recommendations. Add a named human expert when it matters.'],
+];
+function SideCopy({T,CUES,M,P}){
+  const order=['Logo','Hook','Intro','Pick','Upload','Analyze','Result','Fixes','Outro'];
+  return COPY.map(([sec,k,h,p])=>{const s=CUES[sec],e=CUES[order[order.indexOf(sec)+1]];
+    const o=M.enter(s+(sec==='Intro'?.5:.15),.55)*(1-M.enter(e-.45,.35));const y=(1-M.enter(s+.15,.7))*28;
+    return <div key={sec} style={{position:'absolute',left:160,top:0,height:H,width:580,display:'flex',flexDirection:'column',justifyContent:'center',gap:26,opacity:o,transform:`translateY(${y}px)`}}>
+      <span style={{fontFamily:"'Geist Mono',monospace",fontSize:26,fontWeight:550,color:P.acc,letterSpacing:0}}>{k}</span>
+      <h2 style={{margin:0,fontSize:sec==='Intro'?76:78,lineHeight:1,letterSpacing:'-.05em',fontWeight:690,color:P.ink,display:'flex',flexWrap:'wrap',columnGap:'.24em'}}>{h.split(' ').map((w,i)=>{const q=M.enter(s+(sec==='Intro'?.5:.15)+i*.07,.5);return <span key={i} style={{display:'inline-block',opacity:q,filter:`blur(${(1-q)*10}px)`,transform:`translateY(${(1-q)*.35}em)`}}>{w}</span>;})}</h2>
+      {p&&<p style={{margin:0,fontSize:34,lineHeight:1.35,color:P.ink2,letterSpacing:'-.02em',maxWidth:'26ch',textWrap:'pretty'}}>{p}</p>}
+    </div>;});
+}
+function LogoReveal({T,C,M}){
+  const e=C.Hook;if(T>e+.1)return null;
+  const mk=M.pop(.2,.9),rot=(1-M.enter(.2,1.1))*-90,dots=[0,1,2,3].map(i=>M.pop(.75+i*.09,.45));
+  const slide=M.draw(1.05,.8),word='Nelview'.split(''),out=M.draw(e-.55,.6);
+  const D=[[13.25,3.3],[13.25,22.83],[22.43,14.09],[4.22,14.09]];
+  return <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',zIndex:12,opacity:1-out,filter:`blur(${out*16}px)`,transform:`scale(${1+out*.15})`}}>
+    <div style={{display:'flex',alignItems:'center',gap:40*slide}}>
+      <div style={{position:'relative',width:200,height:200,transform:`scale(${.3+.7*mk}) rotate(${rot}deg)`,opacity:Math.min(1,mk*1.5),filter:`blur(${(1-Math.min(1,mk))*14}px)`}}>
+        <div style={{position:'absolute',inset:-60,borderRadius:'50%',background:'radial-gradient(circle,rgba(27,179,92,.28),transparent 65%)',opacity:mk*(1-slide*.5)}}/>
+        <svg width="200" height="200" viewBox="0 0 26.5 26.51" style={{position:'relative',display:'block',overflow:'visible'}}><path fill="#14231B" d={RC_P}/>{D.map((d,i)=><circle key={i} fill="#1BB35C" cx={d[0]} cy={d[1]} r={1.44*dots[i]}/>)}</svg>
+      </div>
+      <div style={{overflow:'hidden',width:720*slide,display:'flex',paddingRight:10*slide}}><div style={{display:'flex',flexShrink:0,fontSize:176,fontWeight:700,letterSpacing:'-.06em',color:'#14231B',lineHeight:1.1,fontFamily:"'Geist',system-ui,sans-serif"}}>{word.map((c,i)=>{const q=M.enter(1.25+i*.06,.5);return <span key={i} style={{display:'inline-block',opacity:q,transform:`translateY(${(1-q)*.4}em)`,filter:`blur(${(1-q)*8}px)`}}>{c}</span>;})}</div></div>
+    </div>
+  </div>;
+}
+function Hook({T,C,M,P}){
+  const lines=[['Your','ultimate'],['pre-submission','audit.']];let n=0;
+  const out=M.draw(C.Intro-.5,.7);if(out>=1||T<C.Hook-.2)return null;
+  return <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,opacity:1-out,transform:`scale(${1+out*.25})`,filter:`blur(${out*14}px)`,zIndex:10}}>
+    {lines.map((l,li)=><div key={li} style={{display:'flex',gap:'.26em',fontSize:150,fontWeight:700,letterSpacing:'-.06em',lineHeight:1,color:li?P.acc:P.ink}}>{l.map(w=>{const q=M.enter(C.Hook+.25+(n++)*.22+(li?.25:0),.6);return <span key={w} style={{display:'inline-block',opacity:q,filter:`blur(${(1-q)*16}px)`,transform:`translateY(${(1-q)*60}px) scale(${.92+.08*q})`}}>{w}</span>;})}</div>)}
+  </div>;
+}
+function Tap({T,at,x,y}){ // finger tap ring, screen coords
+  const a=clamp((T-at+.35)/.35,0,1),b=clamp((T-at)/.45,0,1);if(T<at-.35||T>at+.5)return null;
+  const o=T<at?a:(1-b);
+  return <div style={{position:'absolute',left:x-26,top:y-26,width:52,height:52,borderRadius:26,background:'rgba(20,35,27,.18)',border:'2px solid rgba(20,35,27,.35)',opacity:o,transform:`scale(${T<at?1.25-.25*a:1+.6*b})`,zIndex:9,pointerEvents:'none'}}/>;
+}
+function Callout({o,x,y,children,dark,r=0,T=0}){if(o<=.001)return null;const f=Math.sin(T*1.5+x*.013+y*.007)*9,fr=Math.sin(T*1.1+y*.01)*1.2;return <div style={{position:'absolute',left:x,top:y,opacity:Math.min(1,o*1.4),filter:`blur(${(1-Math.min(1,o*1.2))*12}px)`,transform:`translateY(${(1-o)*40+f}px) scale(${.85+.15*o}) rotate(${r*(1-o)+fr}deg)`,transformOrigin:'left center',background:dark?'linear-gradient(160deg,rgba(30,92,67,.72),rgba(15,59,42,.62))':'linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.46))',backdropFilter:'blur(26px) saturate(1.7)',WebkitBackdropFilter:'blur(26px) saturate(1.7)',color:dark?'#fff':'#14231B',borderRadius:24,padding:'20px 24px',border:dark?'1px solid rgba(255,255,255,.22)':'1px solid rgba(255,255,255,.85)',boxShadow:'inset 0 1px 0 rgba(255,255,255,.7),inset 0 -12px 24px -18px rgba(255,255,255,.4),0 30px 60px -24px rgba(10,30,20,.4)',display:'flex',alignItems:'center',gap:16,fontFamily:"'Geist',system-ui,sans-serif",zIndex:8,whiteSpace:'nowrap'}}>{children}</div>;}
+function CIco({n,bg='#E8F7EE',c='#15803D'}){return <span style={{width:52,height:52,borderRadius:15,background:bg,color:c,display:'flex',alignItems:'center',justifyContent:'center'}}><RcIcon n={n} s={24}/></span>;}
+function Aurora({T,P,a,px,bg}){
+  if(window.__solidBg===true)return <><div style={{position:'absolute',left:1180-420+px*.4,top:540-420,width:840,height:840,borderRadius:'50%',background:P.blob,opacity:bg,transform:`scale(${.8+.2*bg+.03*Math.sin(T*.5)})`}}/><div style={{position:'absolute',left:1180-300+px*.4,top:540-300,width:600,height:600,borderRadius:'50%',border:`2px solid ${P.ring}`,opacity:bg*.6,transform:`scale(${1+.04*Math.sin(T*.7)})`}}/></>;
+  const B=[[P.blob,1300,260,820,.16,.42],[P.ring,1640,860,680,.21,.55],[P.acc,1020,900,600,.12,.4],[P.grid,300,160,760,.09,.8],[P.grid,560,960,560,.18,.6]];
+  return <><div style={{position:'absolute',inset:-200,filter:'blur(110px) saturate(1.1)',opacity:a}}>{B.map(([c,x,y,s,sp,o],i)=>{const dx=Math.sin(T*sp+i*1.7)*110,dy=Math.cos(T*sp*1.3+i)*80,k=1+.08*Math.sin(T*sp*1.8+i*2);
+    return <div key={i} style={{position:'absolute',left:x+200-s/2+px*.35,top:y+200-s/2,width:s,height:s,borderRadius:'50%',background:`radial-gradient(circle at 40% 40%,${c},transparent 68%)`,opacity:o,transform:`translate(${dx}px,${dy}px) scale(${k})`}}/>;})}</div>
+    <div style={{position:'absolute',left:1180-360+px*.4,top:540-360,width:720,height:720,borderRadius:'50%',opacity:bg*.9,transform:`scale(${1+.04*Math.sin(T*.7)})`,background:'linear-gradient(150deg,rgba(255,255,255,.34),rgba(255,255,255,.06) 55%,rgba(255,255,255,.14))',backdropFilter:'blur(18px)',WebkitBackdropFilter:'blur(18px)',border:'1px solid rgba(255,255,255,.5)',boxShadow:'inset 0 2px 0 rgba(255,255,255,.55),inset 0 -40px 80px -40px rgba(255,255,255,.25),0 40px 90px -50px rgba(10,30,20,.35)'}}/>
+    <div style={{position:'absolute',left:1180+170+px*.4,top:540-330,width:220,height:220,borderRadius:'50%',opacity:bg*.85,transform:`translate(${Math.sin(T*.5)*16}px,${Math.cos(T*.4)*20}px)`,background:'linear-gradient(145deg,rgba(255,255,255,.45),rgba(255,255,255,.08))',backdropFilter:'blur(14px)',WebkitBackdropFilter:'blur(14px)',border:'1px solid rgba(255,255,255,.6)',boxShadow:'inset 0 2px 0 rgba(255,255,255,.7)'}}/>
+    <div style={{position:'absolute',inset:0,opacity:.03,mixBlendMode:'overlay',backgroundImage:'radial-gradient(rgba(0,0,0,.9) 1px,transparent 1px)',backgroundSize:'4px 4px'}}/></>;
+}
+function AudioTrack({T,src,vol=1,fadeOut=0,end=0}){
+  const ref=React.useRef(null),last=React.useRef({T:0,w:0});
+  React.useEffect(()=>()=>{const a=ref.current;if(a)a.pause()},[]);
+  React.useEffect(()=>{const a=ref.current;if(!a)return;a.volume=Math.max(0,Math.min(1,vol*(fadeOut&&end?clamp((end-T)/fadeOut,0,1):1)*clamp(T/.6,0,1)));
+    const now=performance.now(),dt=(now-last.current.w)/1000,dT=T-last.current.T;last.current={T,w:now};
+    const playing=dT>0&&dT<.25&&Math.abs(dT-dt)<.12;
+    if(a.duration&&T>a.duration){if(!a.paused)a.pause();return}
+    if(playing){if(a.paused)a.play().catch(()=>{});if(Math.abs(a.currentTime-T)>.25)a.currentTime=T}
+    else{if(!a.paused)a.pause();if(Math.abs(a.currentTime-T)>.04)a.currentTime=T}});
+  return <audio ref={ref} src={src} preload="metadata"/>;
+}
+function Piece(){
+  const {T,CUES,authoredTotal}=useComposition();const snd=window.__sound!==false;const M=useMotion(T);
+  const C=CUES,end=authoredTotal;const P=palAt(T,C,window.__dynColor!==false);
+  // phone placement + camera
+  const inP=M.enter(C.Intro-.2,1.1),outP=M.draw(C.Outro+.1,.9);
+  const py=(1-inP)*260+outP*0,px=outP*520,po=Math.min(inP,1-M.enter(C.Outro+.5,.5));
+  const zoomIn=M.draw(C.Result+.3,1.1),zoomOut=M.draw(C.Fixes-.2,1);const zs=1+.55*(zoomIn-zoomOut);
+  // screens
+  const pos=M.draw(C.Upload-.25,.55)+M.draw(C.Analyze-.2,.55)+M.draw(C.Result-.2,.55);
+  const sel=M.pop(C.Pick+2.05,.5),cta=T>C.Pick+2.2?1:0,press=clamp(1-Math.abs(T-(C.Pick+2))/.18,0,1);
+  const drop=M.pop(C.Upload+.7,.55),prog=M.draw(C.Upload+1.1,1.1),std=M.enter(C.Upload+2.55,.3),go=clamp(1-Math.abs(T-(C.Upload+3.9))/.15,0,1);
+  const k=6*M.draw(C.Analyze+.3,3.9);
+  const score=M.draw(C.Result+.4,1.6),bars=M.enter(C.Result+1.4,1.6),recs=M.enter(C.Fixes+.6,1.4),scroll=300*M.draw(C.Fixes+.1,1.3),exp=clamp(1-Math.abs(T-(C.Fixes+3.6))/.15,0,1);
+  const bg=Math.min(M.enter(C.Intro-.4,.8),1-M.enter(end-.6,.5));
+  const aur=.3+.7*M.enter(C.Intro-.4,1);const bob=Math.sin(T*.9)*10,bobR=Math.sin(T*.6)*1.5;
+  const outro=M.enter(C.Outro+.7,.7)*(1-M.enter(end-.6,.5));
+  const life=(s,d)=>M.pop(s,.55)*(1-M.enter(s+d,.35));
+  const tilt=-18*(1-inP)-6*(1-zoomIn+zoomOut)*inP+8*outP;const fr=pos%1,mblur=fr>0&&fr<1?7*Math.sin(Math.PI*fr):0;
+  const screens=[<RcHome sel={sel} cta={cta} press={press}/>,<RcUpload drop={drop} prog={prog} std={std} go={go}/>,<RcAnalyze k={k}/>,<RcResult score={score} bars={bars} recs={recs} scroll={scroll} exp={exp}/>];
+  return <div data-screen-label={`t=${Math.floor(T)}s`} style={{position:'absolute',inset:0,background:P.bg,overflow:'hidden',fontFamily:"'Geist',system-ui,sans-serif"}}>
+    <Aurora T={T} P={P} a={aur} px={px} bg={bg*(1-outro)}/>
+    <AudioTrack T={T} src="../assets/audio/music.mp3" vol={window.__omEmbed&&window.__embedMuted!==false?0:.8} fadeOut={2.2} end={end}/><LogoReveal T={T} C={C} M={M}/><Hook T={T} C={C} M={M} P={P}/><SideCopy T={T} CUES={C} M={M} P={P}/>
+    <div style={{position:'absolute',left:1180-215,top:540-441,opacity:po,transform:`translate(${px}px,${py}px)`}}>
+      <div style={{perspective:2200}}><div style={{transformOrigin:'112px 222px',transform:`translateY(${bob*inP}px) scale(${zs}) rotateX(${bobR}deg) rotateY(${tilt+bobR*1.5}deg) rotate(${(1-inP)*-4}deg)`}}>
+        <RcPhone><div style={{position:'absolute',inset:0,filter:mblur>.3?`blur(${mblur}px)`:'none'}}>{screens.map((s,i)=><div key={i} style={{position:'absolute',inset:0,transform:`translateX(${(i-pos)*390}px)`}}>{s}</div>)}</div>
+          <div style={{position:'absolute',inset:0,zIndex:6,pointerEvents:'none',background:`linear-gradient(115deg,transparent ${20+((T*9)%120)-40}%,rgba(255,255,255,.22) ${28+((T*9)%120)-40}%,transparent ${40+((T*9)%120)-40}%)`,mixBlendMode:'soft-light'}}/><div style={{position:'absolute',inset:0,zIndex:6,pointerEvents:'none',background:'linear-gradient(160deg,rgba(255,255,255,.14),transparent 38%)'}}/>
+          <Tap T={T} at={C.Pick+2} x={103} y={293}/><Tap T={T} at={C.Pick+4.1} x={195} y={787}/>
+          <Tap T={T} at={C.Upload+2.5} x={195} y={569}/><Tap T={T} at={C.Upload+3.9} x={195} y={787}/>
+          <Tap T={T} at={C.Fixes+3.6} x={195} y={640}/>
+        </RcPhone>
+      </div></div>
+    </div>
+    <div style={{position:'absolute',inset:0,transform:`translateX(${px}px)`,opacity:po}}>
+      <Callout T={T} o={life(C.Pick+2.3,2.2)} x={1430} y={250} r={-4}><CIco n="check" bg="#1BB35C" c="#fff"/><div><b style={{fontSize:26,fontWeight:650,letterSpacing:'-.03em',display:'block'}}>Framework matched</b><span style={{fontSize:20,color:'#6B7280'}}>5 criteria · journal manuscript</span></div></Callout>
+      <Callout T={T} o={life(C.Upload+2.3,1.9)} x={1440} y={560} r={4}><CIco n="file" bg="#FDECEC" c="#C0262D"/><div><b style={{fontSize:26,fontWeight:650,letterSpacing:'-.03em',display:'block'}}>14 pages parsed</b><span style={{fontSize:20,color:'#6B7280'}}>6,210 words · 38 references</span></div></Callout>
+      {[['Methods',.6,1440,230],['Statistics',1.4,1470,430],['Ethics',2.2,1440,630]].map(([l,d,x,y])=><Callout T={T} key={l} o={life(C.Analyze+d,4.1-d)} x={x} y={y}><span style={{width:36,height:36,borderRadius:18,background:'#1BB35C',display:'flex',alignItems:'center',justifyContent:'center'}}><RcIcon n="check" s={18} c="#fff" w={3}/></span><b style={{fontSize:26,fontWeight:620,letterSpacing:'-.02em'}}>{l} checked</b></Callout>)}
+      <Callout T={T} dark o={life(C.Fixes+3.8,1.1)} x={1430} y={700} r={-3}><CIco n="users" bg="rgba(255,255,255,.12)" c="#fff"/><div><b style={{fontSize:26,fontWeight:650,letterSpacing:'-.03em',display:'block'}}>Expert review requested</b><span style={{fontSize:20,color:'#B9CBBF'}}>Matched to your field</span></div></Callout>
+    </div>
+    <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'flex-start',justifyContent:'center',paddingLeft:160,gap:34,opacity:outro,transform:`translateY(${(1-M.enter(C.Outro+.7,.8))*30}px)`}}>
+      <div style={{display:'flex',alignItems:'center',gap:18,fontSize:44,fontWeight:680,letterSpacing:'-.04em',color:'#14231B'}}><RcLogo s={52}/>Nelview</div>
+      <h2 style={{margin:0,fontSize:108,lineHeight:.98,letterSpacing:'-.055em',fontWeight:700,color:'#14231B',maxWidth:'none'}}>Your ultimate<br/><span style={{color:'#15803D',whiteSpace:'nowrap'}}>pre&#8209;submission audit.</span></h2>
+      <div style={{display:'flex',alignItems:'center',gap:18,marginTop:8}}><span style={{background:'#1BB35C',color:'#fff',fontSize:32,fontWeight:600,padding:'18px 34px',borderRadius:18}}>Join the waitlist</span><span style={{fontSize:32,color:'#3E4A42',fontWeight:550}}>nelview.com</span></div>
+    </div>
+  </div>;
+}
+function EmbedControls(){
+  const [,force]=React.useState(0);const [hover,setHover]=React.useState(true);const [muted,setMuted]=React.useState(true);const bar=React.useRef(null),hideT=React.useRef(null);
+  React.useEffect(()=>{const f=()=>force(n=>n+1);window.addEventListener('omctl',f);return()=>window.removeEventListener('omctl',f)},[]);
+  React.useEffect(()=>{window.__embedMuted=muted},[muted]);
+  const c=window.__omCtl;if(!c)return null;
+  const poke=()=>{setHover(true);clearTimeout(hideT.current);hideT.current=setTimeout(()=>setHover(false),2200)};
+  const seekAt=e=>{const r=bar.current.getBoundingClientRect();c.seek(clamp((e.clientX-r.left)/r.width,0,1)*c.duration)};
+  const drag=e=>{seekAt(e);const mv=ev=>seekAt(ev),up=()=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up)};addEventListener('pointermove',mv);addEventListener('pointerup',up)};
+  const fmt=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+  const show=hover||!c.playing,pct=100*c.time/c.duration;
+  const B={width:36,height:36,borderRadius:18,border:0,background:'transparent',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',flexShrink:0};
+  return <div onPointerMove={poke} onPointerLeave={()=>setHover(false)} style={{position:'fixed',inset:0,zIndex:50,fontFamily:"'Geist',system-ui,sans-serif"}}>
+    <div onClick={()=>{c.toggle();poke()}} style={{position:'absolute',inset:0,cursor:'pointer'}}/>
+    {!c.playing&&<button onClick={()=>c.play()} aria-label="Play" style={{position:'absolute',left:'50%',top:'50%',width:76,height:76,margin:'-38px 0 0 -38px',borderRadius:38,border:'1px solid rgba(255,255,255,.5)',background:'rgba(15,59,42,.72)',backdropFilter:'blur(14px)',WebkitBackdropFilter:'blur(14px)',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',boxShadow:'0 20px 40px -16px rgba(0,0,0,.4)'}}><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></button>}
+    <div style={{position:'absolute',left:14,right:14,bottom:14,height:48,borderRadius:16,background:'rgba(14,20,17,.62)',backdropFilter:'blur(16px) saturate(1.4)',WebkitBackdropFilter:'blur(16px) saturate(1.4)',border:'1px solid rgba(255,255,255,.14)',display:'flex',alignItems:'center',gap:6,padding:'0 8px',opacity:show?1:0,transform:`translateY(${show?0:10}px)`,transition:'opacity .25s,transform .25s',pointerEvents:show?'auto':'none'}}>
+      <button style={B} aria-label={c.playing?'Pause':'Play'} onClick={()=>c.toggle()}>{c.playing?<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>:<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>}</button>
+      <button style={B} aria-label="Restart" onClick={()=>{c.seek(0);c.play()}}><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+      <span style={{color:'#fff',fontSize:13,fontVariantNumeric:'tabular-nums',minWidth:34,textAlign:'right'}}>{fmt(c.time)}</span>
+      <div ref={bar} onPointerDown={drag} style={{flex:1,height:24,display:'flex',alignItems:'center',cursor:'pointer',margin:'0 6px'}}><div style={{position:'relative',width:'100%',height:5,borderRadius:3,background:'rgba(255,255,255,.22)'}}><div style={{position:'absolute',left:0,top:0,bottom:0,width:pct+'%',borderRadius:3,background:'#1BB35C'}}/><div style={{position:'absolute',left:pct+'%',top:'50%',width:13,height:13,margin:'-6.5px 0 0 -6.5px',borderRadius:7,background:'#fff',boxShadow:'0 1px 4px rgba(0,0,0,.4)'}}/></div></div>
+      <span style={{color:'rgba(255,255,255,.7)',fontSize:13,fontVariantNumeric:'tabular-nums',minWidth:34}}>{fmt(c.duration)}</span>
+      <button style={B} aria-label={muted?'Unmute':'Mute'} onClick={()=>setMuted(m=>!m)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4z" fill="#fff"/>{muted?<><path d="M22 9l-6 6"/><path d="M16 9l6 6"/></>:<><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></>}</svg></button>
+      <a style={{...B,textDecoration:'none'}} aria-label="Open full screen" href="Nelview%20Mobile%20Demo.html" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></a>
+    </div>
+  </div>;
+}
+function App(){const [t,setTweak]=useTweaks(window.TWEAK_DEFAULTS);window.__dynColor=t.dynamicColor!==false;window.__solidBg=t.backdrop==='Solid';window.__sound=t.sound!==false;
+  return <><CompositionStage width={W} height={H} scenes={window.OM_SCENES} playback={window.OM_PLAYBACK} bg="#F4F5F6" motionEditor={t.motionEditor}><Piece/></CompositionStage>{window.__omEmbed&&<EmbedControls/>}
+  <TweaksPanel><TweakSection label="Video"/><TweakToggle label="Sound" value={t.sound!==false} onChange={v=>setTweak('sound',v)}/><TweakRadio label="Backdrop" value={t.backdrop||'Blend'} options={['Solid','Blend']} onChange={v=>setTweak('backdrop',v)}/><TweakToggle label="Dynamic scene colors" value={t.dynamicColor!==false} onChange={v=>setTweak('dynamicColor',v)}/><TweakToggle label="Motion editor" value={t.motionEditor} onChange={v=>setTweak('motionEditor',v)}/></TweaksPanel></>;}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

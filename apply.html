@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply to become a reviewer · Nelview</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+</head>
+<body data-page="exp">
+<div data-site-header></div>
+<main>
+<section class="page-hero" style="padding:64px 0 40px">
+<div class="wrap"><h1 class="h2">Apply to become a Nelview reviewer</h1>
+<p class="lead" style="margin-top:14px">About 8 minutes. We verify every applicant within 5–7 working days.</p></div>
+</section>
+<section style="padding-bottom:112px">
+<div class="wrap apply">
+<aside>
+<div class="photo ap-ph"><img src="assets/web/portrait-m.jpg" alt="Nelview expert reviewer" loading="lazy" decoding="async" width="1600" height="1066"></div><div class="stepper" id="stepper">
+<div class="s on"><i>1</i><span>About you<small>Name, role, institution</small></span></div>
+<div class="s"><i>2</i><span>Expertise<small>Fields and experience</small></span></div>
+<div class="s"><i>3</i><span>Credentials<small>ORCID, degree, CV</small></span></div>
+<div class="s"><i>4</i><span>Preferences<small>Rate and availability</small></span></div>
+</div>
+<div class="card" style="margin-top:24px;background:var(--bg-2)"><b style="font-size:15px">What happens next</b><ul class="checks" style="margin:4px 0 0;gap:10px"><li data-ic="check" style="font-size:14px">Credential check in 5–7 days</li><li data-ic="check" style="font-size:14px">A short paid calibration review</li><li data-ic="check" style="font-size:14px">Matched briefs in your field</li></ul></div>
+</aside>
+<div class="card" style="padding:40px">
+<form id="apf" novalidate><input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<div class="fpanel on" data-p="0">
+<h2>About you</h2>
+<div class="fld"><label>How would you like to contribute?</label>
+<div class="opt"><label><input type="radio" name="role" value="Peer reviewer" checked><b>Peer reviewer</b>Structured reviews on submissions in your field</label><label><input type="radio" name="role" value="Examiner"><b>External examiner</b>Theses and dissertations for partner universities</label><label><input type="radio" name="role" value="Board"><b>Academic board</b>Help shape and benchmark our frameworks</label></div></div>
+<div class="form two"><div class="fld"><label>Full name *</label><input name="name" required placeholder="Dr. Amara Okafor"></div><div class="fld"><label>Title *</label><select name="title" required><option value="">Select…</option><option>Professor</option><option>Associate Professor</option><option>Senior Lecturer</option><option>Lecturer</option><option>Postdoctoral Researcher</option><option>Research Consultant</option></select></div></div>
+<div class="form two"><div class="fld"><label>Email *</label><input name="email" type="email" required placeholder="you@university.edu"></div><div class="fld"><label>Country *</label><input name="country" required placeholder="Ghana"></div></div>
+<div class="fld"><label>Institution or organisation *</label><input name="inst" required placeholder="University of Ghana"></div>
+</div>
+
+<div class="fpanel" data-p="1">
+<h2>Your expertise</h2>
+<div class="fld"><label>Primary fields * <span class="muted" style="font-weight:400">(pick any)</span></label><div class="chips" data-chips="fields"><span class="chip">Life Sciences</span><span class="chip">Medicine</span><span class="chip">Public Health</span><span class="chip">Biostatistics</span><span class="chip">Engineering</span><span class="chip">Computer Science</span><span class="chip">Social Sciences</span><span class="chip">Economics</span><span class="chip">Education</span><span class="chip">Agriculture</span><span class="chip">Humanities</span><span class="chip">Environmental Science</span></div></div>
+<div class="form two"><div class="fld"><label>Years of research experience *</label><select name="years" required><option value="">Select…</option><option>3–5 years</option><option>6–10 years</option><option>11–15 years</option><option>16+ years</option></select></div><div class="fld"><label>Peer reviews completed</label><select name="revs"><option>Fewer than 10</option><option>10–50</option><option>50–150</option><option>150+</option></select></div></div>
+<div class="fld"><label>Document types you can review</label><div class="chips" data-chips="docs"><span class="chip">Journal manuscripts</span><span class="chip">Grant proposals</span><span class="chip">Theses</span><span class="chip">Ethics applications</span><span class="chip">Conference abstracts</span><span class="chip">Statistical review</span></div></div>
+</div>
+
+<div class="fpanel" data-p="2">
+<h2>Credentials &amp; verification</h2>
+<p class="muted" style="margin-top:-8px">Kept confidential and used only to validate your application.</p>
+<div class="form two"><div class="fld"><label>ORCID iD *</label><input name="orcid" required placeholder="0000-0002-1825-0097" pattern="\d{4}-\d{4}-\d{4}-\d{3}[\dX]"></div><div class="fld"><label>Google Scholar or profile URL</label><input name="scholar" placeholder="https://scholar.google.com/…"></div></div>
+<div class="fld"><label>Highest degree *</label><select name="degree" required><option value="">Select…</option><option>PhD</option><option>MD</option><option>MD-PhD</option><option>Master's</option><option>Other doctoral</option></select></div>
+<div class="fld"><label>CV or résumé *</label><label class="upl" id="upl"><span class="ico lg" data-ic="upload" data-s="20"></span><div><b id="cvl">Upload your CV</b><span class="h">PDF or DOCX, up to 10 MB</span></div><input type="file" id="cv" accept=".pdf,.doc,.docx" hidden></label></div>
+</div>
+
+<div class="fpanel" data-p="3">
+<h2>Review preferences</h2>
+<div class="form two"><div class="fld"><label>Target rate per review (USD) *</label><select name="rate" required><option value="">Select…</option><option>$80–120</option><option>$120–180</option><option>$180–240</option><option>$240+</option></select></div><div class="fld"><label>Reviews per month</label><select name="cap"><option>1–2</option><option>3–5</option><option>6+</option></select></div></div>
+<div class="fld"><label>Payout method</label><div class="opt"><label><input type="radio" name="pay" value="Bank" checked><b>Bank transfer</b>Local or international</label><label><input type="radio" name="pay" value="Mobile money"><b>Mobile money</b>Paid to your phone</label><label><input type="radio" name="pay" value="PayPal"><b>PayPal</b>Paid in USD</label></div></div>
+<div class="fld"><label>Anything else we should know?</label><textarea name="note" placeholder="Editorial roles, awards, or areas you'd especially like to review…"></textarea></div>
+<label class="chk"><input type="checkbox" id="agree">I confirm this information is accurate and agree to Nelview's reviewer terms, confidentiality and double-blind policy.</label>
+</div>
+
+<div class="ferr" id="ferr">Please complete the required fields.</div>
+<div class="ffoot"><button type="button" class="btn btn-g" id="back" style="visibility:hidden">Back</button><span class="muted" style="font-size:14px" id="cnt">Step 1 of 4</span><button type="submit" class="btn btn-p" id="next">Continue<span data-ic="arrow" data-s="16"></span></button></div>
+</form>
+<div class="done" id="apdone" style="padding:24px 8px;text-align:left">
+<span class="ico lg" data-ic="check" data-s="22" style="margin:0 0 18px;background:var(--blue);color:#fff"></span>
+<h2 class="h3">Application received, <span id="dn">there</span>.</h2>
+<p class="muted" style="margin-top:10px">We've sent a confirmation to <b id="de" style="color:var(--ink)"></b>. Here's what happens next.</p>
+<div class="tl"><div class="dn"><i data-ic="check" data-s="14"></i><div><b>Application submitted</b><span>Today</span></div></div><div><i>2</i><div><b>Credential verification</b><span>ORCID, affiliation and publication record · 5–7 working days</span></div></div><div><i>3</i><div><b>Identity check (KYC)</b><span>Required before your first payout</span></div></div><div><i>4</i><div><b>Calibration review</b><span>One paid review to align with our standards</span></div></div><div><i>5</i><div><b>Start receiving briefs</b><span>Matched to your fields in the Expert Portal</span></div></div></div>
+<div class="row" style="margin-top:8px"><a class="btn btn-d" href="https://app.nelview.com/expert">Preview the Expert Portal<span data-ic="arrow"></span></a><a class="btn btn-g" href="index.html">Back to home</a></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div data-site-footer></div>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<script>
+(function(){
+var f=document.getElementById('apf'),P=f.querySelectorAll('.fpanel'),S=document.querySelectorAll('#stepper .s'),cur=0,err=document.getElementById('ferr');
+document.querySelectorAll('[data-chips] .chip').forEach(function(c){c.onclick=function(){c.classList.toggle('on');};});
+var cv=document.getElementById('cv');cv.onchange=function(){if(cv.files[0])document.getElementById('cvl').textContent=cv.files[0].name;};
+function go(n){cur=n;P.forEach(function(p,i){p.classList.toggle('on',i===n);});S.forEach(function(s,i){s.classList.toggle('on',i===n);s.classList.toggle('dn',i<n);s.querySelector('i').innerHTML=i<n?nvIc('check',14):(i+1);});document.getElementById('back').style.visibility=n?'visible':'hidden';document.getElementById('cnt').textContent='Step '+(n+1)+' of 4';document.getElementById('next').innerHTML=n===3?'Submit application':'Continue'+nvIc('arrow',16);err.classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});}
+function valid(){var p=P[cur],ok=true;p.querySelectorAll('[required]').forEach(function(i){if(!i.value.trim()||!i.checkValidity())ok=false;});
+if(cur===1&&!p.querySelector('[data-chips=fields] .chip.on'))ok=false;
+if(cur===2&&!cv.files.length)ok=false;
+if(cur===3&&!document.getElementById('agree').checked)ok=false;return ok;}
+document.getElementById('back').onclick=function(){go(cur-1);};
+f.addEventListener('submit',function(e){e.preventDefault();if(!valid()){err.classList.add('show');return;}if(cur<3){go(cur+1);return;}
+var fd=nvFdata(f),ch=function(g){return [].map.call(document.querySelectorAll('[data-chips='+g+'] .chip.on'),function(c){return c.textContent.trim()}).join('; ')};fd.stage='Expert application';if(fd.inst&&!fd.institution){fd.institution=fd.inst;delete fd.inst}fd.fields=ch('fields');[].forEach.call(document.querySelectorAll('[data-chips]'),function(g){var k=g.getAttribute('data-chips');if(k!=='fields')fd[k]=ch(k)});fd.cv_file=cv.files[0]?cv.files[0].name:'';nvSend(fd);
+document.getElementById('dn').textContent=(f.elements['name'].value.trim().split(' ').filter(function(w){return !/^(Dr|Prof)\.?$/.test(w)})[0]||'there');document.getElementById('de').textContent=f.elements['email'].value.trim();
+f.style.display='none';document.getElementById('apdone').classList.add('show');S.forEach(function(s){s.classList.remove('on');s.classList.add('dn');s.querySelector('i').innerHTML=nvIc('check',14);});window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+</body>
+</html>

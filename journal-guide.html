@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predatory journal guide · Nelview</title>
+<meta name="description" content="Seven red flags, a five-minute check and what to do if you've already submitted. A free guide to spotting predatory journals.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+<style>
+.jg-hero{padding:clamp(72px,9vw,120px) 0 clamp(56px,7vw,96px)}
+.jg-hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
+.jg-hero h1{font-size:clamp(44px,6.6vw,92px);line-height:.97;letter-spacing:-.05em;font-weight:680;margin:18px 0 0;max-width:13ch;text-wrap:balance}
+.jg-hero h1 em{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;color:var(--g,#1BB35C);letter-spacing:-.01em}
+.jg-hero .lead{margin-top:24px;max-width:46ch}
+.jg-hero .row{margin-top:32px;gap:12px;flex-wrap:wrap}
+.jg-hero .photo{aspect-ratio:4/5;border-radius:24px;max-height:600px;position:relative}
+.jg-hero .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.jg-stamp{position:absolute;left:20px;bottom:20px;right:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:center;font-size:14px;color:var(--ink-2)}
+.jg-stamp b{display:block;color:var(--ink);font-size:15px}
+.jg-stamp .dotr{width:36px;height:36px;border-radius:50%;background:#FDE8E9;color:#C2333A;display:grid;place-items:center;flex:none;font-weight:700}
+.jg-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;font:500 12px/1 'Geist Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.jg-chk{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:24px;align-items:start;margin-top:40px}
+.jg-list{display:flex;flex-direction:column;gap:10px}
+.jg-q{display:flex;gap:16px;align-items:flex-start;text-align:left;width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .3s,background .3s,transform .4s cubic-bezier(.22,1,.36,1)}
+.jg-q:hover{border-color:rgba(15,59,42,.35)}
+.jg-q .bx{width:24px;height:24px;border-radius:7px;border:1.5px solid rgba(15,59,42,.3);flex:none;display:grid;place-items:center;margin-top:1px;transition:background .25s,border-color .25s;color:#fff}
+.jg-q .bx svg{opacity:0;transform:scale(.6);transition:opacity .2s,transform .3s cubic-bezier(.22,1,.36,1)}
+.jg-q b{display:block;font-size:16px;letter-spacing:-.01em}.jg-q span.d{display:block;color:var(--ink-2);font-size:14.5px;margin-top:3px;line-height:1.5}
+.jg-q[aria-pressed="true"]{border-color:#E0484F;background:#FFF6F6}
+.jg-q[aria-pressed="true"] .bx{background:#E0484F;border-color:#E0484F}.jg-q[aria-pressed="true"] .bx svg{opacity:1;transform:scale(1)}
+.jg-res{position:sticky;top:96px;background:var(--forest,#0F3B2A);color:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.jg-res .lb{font:500 12px/1 'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.jg-res .big{font-size:64px;font-weight:680;letter-spacing:-.05em;line-height:1}.jg-res .big small{font-size:20px;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:0;margin-left:6px}
+.jg-meter{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.jg-meter i{height:8px;border-radius:4px;background:rgba(255,255,255,.16);transition:background .35s}
+.jg-v{font-size:22px;font-weight:620;letter-spacing:-.02em}.jg-res p{margin:0;color:rgba(255,255,255,.85);line-height:1.55}
+.jg-res .btn{align-self:flex-start}
+.jg-reset{background:none;border:0;color:rgba(255,255,255,.75);font:inherit;font-size:14px;text-decoration:underline;cursor:pointer;padding:0;align-self:flex-start}
+.jg-flags{display:flex;flex-direction:column;margin-top:48px;border-top:1px solid var(--line)}
+.jg-flag{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr);gap:24px 40px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}
+.jg-flag .n{font:500 13px/1 'Geist Mono',monospace;color:var(--ink-3);padding-top:8px}
+.jg-flag h3{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.025em;margin:0;line-height:1.15}
+.jg-flag p{margin:10px 0 0;color:var(--ink-2);line-height:1.6}
+.jg-ex{background:var(--alt,#F6F3EC);border-radius:14px;padding:16px 18px;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.jg-ex .k{display:block;font:500 11px/1 'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#C2333A;margin-bottom:8px}
+.jg-ex q{font-style:italic;color:var(--ink)}
+.jg-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:40px;counter-reset:s}
+.jg-step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.jg-step .t{font:500 12px/1 'Geist Mono',monospace;color:var(--g,#1BB35C);letter-spacing:.06em}
+.jg-step h3{font-size:18px;letter-spacing:-.02em;margin:0}.jg-step p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55;flex:1}
+.jg-step a{font-weight:550;font-size:14px;color:var(--forest,#0F3B2A);display:inline-flex;gap:6px;align-items:center}
+.jg-mail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;margin-top:40px}
+.jg-env{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.45)}
+.jg-env .hd{padding:16px 22px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px}
+.jg-env .hd b{color:var(--ink)}
+.jg-env .bd{padding:22px;font-size:15px;line-height:1.7}
+.jg-env mark{background:#FDE8E9;color:var(--ink);border-radius:4px;padding:1px 4px;box-shadow:inset 0 -2px 0 #E0484F}
+.jg-env sup{font:600 10px/1 'Geist Mono',monospace;color:#fff;background:#E0484F;border-radius:50%;width:16px;height:16px;display:inline-grid;place-items:center;margin-left:3px;vertical-align:2px}
+.jg-notes{display:flex;flex-direction:column;gap:18px;list-style:none;margin:0;padding:0}
+.jg-notes li{display:flex;gap:14px;align-items:flex-start;color:rgba(255,255,255,.88);line-height:1.55}
+.jg-notes li span.c{font:600 11px/1 'Geist Mono',monospace;color:#fff;background:#E0484F;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;flex:none;margin-top:1px}
+.jg-notes b{color:#fff;display:block}
+.jg-after{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.jg-after .photo{aspect-ratio:4/3;border-radius:24px}.jg-after .photo img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:1080px){.jg-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.jg-steps .jg-step:last-child{grid-column:span 2}}
+@media(max-width:900px){.jg-hero .wrap,.jg-chk,.jg-mail,.jg-after{grid-template-columns:minmax(0,1fr)}.jg-hero .photo{aspect-ratio:4/3;max-height:420px}.jg-res{position:static}.jg-flag{grid-template-columns:minmax(0,1fr);gap:14px}.jg-flag .n{padding:0}}
+@media(max-width:560px){.jg-steps{grid-template-columns:minmax(0,1fr)}.jg-steps .jg-step:last-child{grid-column:auto}}
+</style>
+</head>
+<body data-page="res">
+<div data-site-header></div>
+<main>
+<section class="jg-hero" data-screen-label="Guide hero">
+<div class="wrap">
+<div>
+<h1 data-i18n="jgh">Spot a predatory journal in <em>five minutes</em>.</h1>
+<p class="lead">Predatory journals take your fee and skip real peer review. A paper placed in one is hard to withdraw and rarely cited. Here's how to catch them before you submit.</p>
+<div class="row"><a class="btn btn-p btn-lg" href="#check">Check a journal now<span data-ic="arrow"></span></a><a class="btn btn-g btn-lg" href="#flags">Read the seven red flags</a></div>
+<div class="jg-meta"><span>Prof. Aisha Sani</span><span>12 min read</span><span>Updated Sep 2026</span></div>
+</div>
+<div class="photo"><img src="assets/gen/photo-contract-review.png" alt="Researcher reviewing a printed manuscript" decoding="async" width="1537" height="1023" fetchpriority="high"><div class="jg-stamp"><span class="dotr">!</span><div><b>"Accepted in 48 hours"</b>The most common promise in a predatory invitation.</div></div></div>
+</div>
+</section>
+
+<section class="sec alt" id="check" data-screen-label="Checker">
+<div class="wrap">
+<div class="split-head"><h2 class="h2" data-i18n="jgc">Check a journal in <em>60 seconds</em>.</h2><p class="lead">Tick everything that applies to the journal you're considering. Nothing you enter leaves this page.</p></div>
+<div class="jg-chk">
+<div class="jg-list" id="jgList">
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>They invited me by email</b><span class="d">Unsolicited, flattering, about a paper you published years ago.</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>Review is promised in days</b><span class="d">Acceptance in 72 hours or less, or "rapid publication guaranteed".</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>The scope covers everything</b><span class="d">Medicine, engineering and literature under one title.</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>I can't verify the editorial board</b><span class="d">Board members don't list the journal on their own pages.</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>Fees weren't stated up front</b><span class="d">The charge appears only after acceptance, or before review.</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>The metrics look unfamiliar</b><span class="d">An "impact factor" from an index you've never heard of.</span></span></button>
+<button type="button" class="jg-q" aria-pressed="false"><span class="bx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span><b>The title mimics a known journal</b><span class="d">One word changed from an established title.</span></span></button>
+</div>
+<div class="jg-res" aria-live="polite">
+<span class="lb">Red flags</span>
+<div class="big"><span id="jgN">0</span><small>of 7</small></div>
+<div class="jg-meter" id="jgM"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="jg-v" id="jgV">No flags yet</div>
+<p id="jgT">Tick anything that applies. Then run the five-minute check below to confirm.</p>
+<a class="btn btn-w" href="#steps">Run the five-minute check<span data-ic="arrow"></span></a>
+<button type="button" class="jg-reset" id="jgR">Start over</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="flags" data-screen-label="Seven red flags">
+<div class="wrap">
+<div class="split-head"><h2 class="h2" data-i18n="jgf">The seven <em>red flags</em>.</h2><p class="lead">One on its own can be innocent. Two or more, and you should verify before you send anything, including your manuscript.</p></div>
+<div class="jg-flags">
+<div class="jg-flag"><span class="n">01</span><div><h3>An unsolicited invitation.</h3><p>Flattering emails that praise a paper you published years ago and promise fast acceptance are the most common entry point.</p></div><div class="jg-ex"><span class="k">What it looks like</span><q>Dear Esteemed Author, we read your outstanding paper with great interest…</q></div></div>
+<div class="jg-flag"><span class="n">02</span><div><h3>Review in days, not weeks.</h3><p>Genuine peer review takes time. A promise of acceptance within 72 hours means no one is reading closely.</p></div><div class="jg-ex"><span class="k">What it looks like</span><q>Peer review completed within 48 hours. Publication in 7 days.</q></div></div>
+<div class="jg-flag"><span class="n">03</span><div><h3>A vague or sprawling scope.</h3><p>A journal that publishes medicine, engineering and literature under one title is not serving any field.</p></div><div class="jg-ex"><span class="k">What it looks like</span><q>International Journal of Advanced Sciences, Arts and Technology</q></div></div>
+<div class="jg-flag"><span class="n">04</span><div><h3>An editorial board you can't verify.</h3><p>Search for three board members. If they don't list the journal on their own university pages or ORCID, be cautious.</p></div><div class="jg-ex"><span class="k">How to check</span>Search each name with their stated university. Look for the journal on their profile.</div></div>
+<div class="jg-flag"><span class="n">05</span><div><h3>Fees that appear late.</h3><p>Reputable open-access journals state their article processing charge up front, on the journal's own site.</p></div><div class="jg-ex"><span class="k">What it looks like</span><q>Congratulations, your paper is accepted. Please remit the handling fee to proceed.</q></div></div>
+<div class="jg-flag"><span class="n">06</span><div><h3>Misleading metrics.</h3><p>Watch for invented impact factors from unfamiliar indexing services. Only Clarivate issues the Journal Impact Factor.</p></div><div class="jg-ex"><span class="k">What it looks like</span><q>Global Impact Factor 4.82 (2026)</q></div></div>
+<div class="jg-flag"><span class="n">07</span><div><h3>A title that mimics a known journal.</h3><p>One changed word can make a predatory title look like an established one. Always check the ISSN, not the name.</p></div><div class="jg-ex"><span class="k">How to check</span>Look the ISSN up in the ISSN Portal and confirm the publisher matches.</div></div>
+</div>
+</div>
+</section>
+
+<section class="sec alt" id="steps" data-screen-label="Five-minute check">
+<div class="wrap">
+<div class="split-head"><h2 class="h2" data-i18n="jgs">The <em>five-minute</em> check.</h2><p class="lead">Five free lookups that catch most predatory journals. About a minute each.</p></div>
+<div class="jg-steps">
+<div class="jg-step"><span class="t">MIN 1</span><h3>Search DOAJ</h3><p>The Directory of Open Access Journals vets titles against published criteria. If it claims open access and isn't listed, that's a serious warning.</p><a href="https://doaj.org" target="_blank" rel="noopener">doaj.org<span data-ic="arrow" data-s="14"></span></a></div>
+<div class="jg-step"><span class="t">MIN 2</span><h3>Check COPE</h3><p>Members of the Committee on Publication Ethics follow a code of conduct. Absence isn't proof, but it adds weight to other flags.</p><a href="https://publicationethics.org" target="_blank" rel="noopener">publicationethics.org<span data-ic="arrow" data-s="14"></span></a></div>
+<div class="jg-step"><span class="t">MIN 3</span><h3>Verify the ISSN</h3><p>Confirm the ISSN exists and belongs to the publisher named on the site.</p><a href="https://portal.issn.org" target="_blank" rel="noopener">portal.issn.org<span data-ic="arrow" data-s="14"></span></a></div>
+<div class="jg-step"><span class="t">MIN 4</span><h3>Look up three editors</h3><p>Search board members by name and university. Real editors list their editorial roles.</p><a href="https://orcid.org" target="_blank" rel="noopener">orcid.org<span data-ic="arrow" data-s="14"></span></a></div>
+<div class="jg-step"><span class="t">MIN 5</span><h3>Run the checklist</h3><p>Think. Check. Submit. is a cross-publisher checklist for choosing a trusted journal. African titles can also be checked on AJOL.</p><a href="https://thinkchecksubmit.org" target="_blank" rel="noopener">thinkchecksubmit.org<span data-ic="arrow" data-s="14"></span></a></div>
+</div>
+</div>
+</section>
+
+<section class="sec dark" data-screen-label="Anatomy of an invitation">
+<div class="wrap">
+<div class="split-head"><h2 class="h2" data-i18n="jga">Anatomy of a predatory <em>invitation</em>.</h2><p class="lead">A typical email, annotated. Most of them hit four or more flags in a few lines.</p></div>
+<div class="jg-mail">
+<div class="jg-env">
+<div class="hd"><span><b>From:</b> editor.ijasat@gmail-journals.org</span><span><b>Subject:</b> Invitation to publish in our esteemed journal</span></div>
+<div class="bd">Dear <mark>Esteemed Author</mark><sup>1</sup>,<br><br>We read your outstanding paper <i>"Enzyme kinetics under simulated microgravity"</i> with great interest and invite you to submit to the <mark>International Journal of Advanced Sciences, Arts and Technology</mark><sup>2</sup>.<br><br>We offer <mark>peer review within 48 hours</mark><sup>3</sup> and publication in 7 days. Our journal has a <mark>Global Impact Factor of 4.82</mark><sup>4</sup>.<br><br>A <mark>modest handling fee</mark><sup>5</sup> applies upon acceptance.</div>
+</div>
+<ol class="jg-notes">
+<li><span class="c">1</span><div><b>Generic greeting</b>A real editor who read your paper would use your name.</div></li>
+<li><span class="c">2</span><div><b>Everything-scope title</b>No field, no community, no editorial focus.</div></li>
+<li><span class="c">3</span><div><b>Impossible timeline</b>Real reviewers need weeks, not hours.</div></li>
+<li><span class="c">4</span><div><b>Invented metric</b>"Global Impact Factor" isn't the Journal Impact Factor.</div></li>
+<li><span class="c">5</span><div><b>Fee with no amount</b>Reputable journals publish their charges up front.</div></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section class="sec" data-screen-label="Already submitted">
+<div class="wrap jg-after">
+<div class="photo"><img src="assets/gen/hero-researcher.png" alt="Researcher at her desk" decoding="async" width="736" height="736" loading="lazy"></div>
+<div>
+<h2 class="h2" data-i18n="jgd">Already submitted? <em>Act now</em>.</h2>
+<p class="lead" style="margin-top:16px">It's not too late, especially if you haven't paid or signed a copyright agreement.</p>
+<div class="plx-list">
+<div><span class="ico lg"><span data-ic="mail" data-s="20"></span></span><div><h3>Withdraw in writing</h3><p>Email the journal stating you are withdrawing your manuscript, and keep a copy. Don't pay any fee.</p></div></div>
+<div><span class="ico lg"><span data-ic="shield" data-s="20"></span></span><div><h3>Keep your copyright</h3><p>If you haven't signed a transfer agreement, the work is still yours to submit elsewhere.</p></div></div>
+<div><span class="ico lg"><span data-ic="users" data-s="20"></span></span><div><h3>Tell your supervisor or library</h3><p>Research offices handle this often and can help you write to the journal.</p></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sec" style="padding-top:0" data-screen-label="Guide CTA">
+<div class="wrap"><div class="cta">
+<h2 class="display" style="font-size:clamp(36px,5.4vw,68px);max-width:16ch;margin:0 auto" data-i18n="jgx">Let Nelview run the <em>check</em> for you.</h2>
+<p class="lead">Journal Check verifies DOAJ, COPE and ISSN records in seconds and suggests legitimate alternatives in your field.</p>
+<div class="row"><a class="btn btn-w btn-lg" href="waitlist.html">Get started<span data-ic="arrow"></span></a><a class="btn btn-o btn-lg" href="article.html?p=predatory-journals">Read the full article</a></div>
+</div></div>
+</section>
+</main>
+<div data-site-footer></div>
+<script>
+(function(){
+var qs=[].slice.call(document.querySelectorAll('#jgList .jg-q')),N=document.getElementById('jgN'),V=document.getElementById('jgV'),T=document.getElementById('jgT'),Ms=[].slice.call(document.querySelectorAll('#jgM i'));
+var S={en:[['No flags yet','Tick anything that applies. Then run the five-minute check below to confirm.'],['Low risk','One flag on its own can be innocent. Still run the five-minute check before submitting.'],['Caution','Two or more flags. Verify the journal in DOAJ and the ISSN Portal before you send anything.'],['High risk','This looks like a predatory journal. Don\'t submit or pay. Look for a legitimate alternative.']],
+fr:[['Aucun signal','Cochez ce qui s\'applique, puis faites la vérification en cinq minutes ci-dessous.'],['Risque faible','Un seul signal peut être anodin. Faites tout de même la vérification en cinq minutes.'],['Prudence','Deux signaux ou plus. Vérifiez la revue dans DOAJ et le portail ISSN avant tout envoi.'],['Risque élevé','Cette revue semble prédatrice. Ne soumettez rien et ne payez rien. Cherchez une alternative légitime.']]};
+function upd(){var n=qs.filter(function(q){return q.getAttribute('aria-pressed')==='true'}).length,l=document.documentElement.lang==='fr'?'fr':'en',lv=n===0?0:n===1?1:n<4?2:3,col=['','#F2A516','#F2A516','#E0484F'][lv];
+N.textContent=n;Ms.forEach(function(m,i){m.style.background=i<n?col:''});V.textContent=S[l][lv][0];T.textContent=S[l][lv][1];V.style.color=lv===3?'#FF9A9E':lv?'#F5C25A':''}
+qs.forEach(function(q){q.addEventListener('click',function(){q.setAttribute('aria-pressed',q.getAttribute('aria-pressed')==='true'?'false':'true');upd()})});
+document.getElementById('jgR').addEventListener('click',function(){qs.forEach(function(q){q.setAttribute('aria-pressed','false')});upd()});
+new MutationObserver(upd).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+</body>
+</html>

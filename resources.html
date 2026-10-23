@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resources · Nelview</title>
+<meta name="description" content="Guides on peer review, journals, grants and research ethics from the Nelview team and academic board.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+</head>
+<body data-page="res">
+<div data-site-header></div>
+<main>
+<section class="phd" data-screen-label="Resources hero">
+<div class="wrap rs-top">
+<div><h1>Guides for getting published.</h1><p class="lead">Practical writing on peer review, journals, grants and research ethics, from our team and academic board.</p></div>
+<label class="srch"><span data-ic="search"></span><input id="q" type="search" placeholder="Search guides" aria-label="Search guides"><kbd>/</kbd></label>
+</div>
+</section>
+<section data-screen-label="Posts" id="guides">
+<div class="wrap">
+<div class="rtabs" id="cats"></div>
+<div id="feat"></div>
+<div class="pgrid" id="posts"></div>
+<p class="empty" id="empty">No guides match that search.</p>
+</div>
+</section>
+<section class="sec-sm prow-s" data-screen-label="Photo row"><div class="wrap"><div class="prow prow-2"><div class="photo t"><img src="assets/web/lab-notes.jpg" alt="Researcher taking notes in a lab" loading="lazy" decoding="async" width="1600" height="1067"></div><div class="photo "><img src="assets/web/pipette-blue.jpg" alt="Scientist pipetting samples" loading="lazy" decoding="async" width="1600" height="2400"></div></div></div></section>
+<section class="sec" data-screen-label="Newsletter">
+<div class="wrap"><div class="nlb">
+<div><h2 class="h2" style="font-size:clamp(30px,3.6vw,46px)">One useful email a month.</h2><p class="lead">New guides, journal warnings and funding calls. Nothing else.</p></div>
+<div><form class="inline-form" data-list="Newsletter" data-sub="You're subscribed. Check your inbox to confirm."><input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><input type="email" placeholder="you@university.edu" required aria-label="Email"><button class="btn btn-p" type="submit">Subscribe</button></form><small>Unsubscribe any time. We never share your email.</small></div>
+</div></div>
+</section>
+</main>
+<div data-site-footer></div>
+<script src="js/posts.js"></script>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<script>
+(function(){
+var P=NV_POSTS,A=NV_AUTH,C=NV_CATS,cat='all',q='';
+function av(k,s){var a=A[k];return a.img?"<span class='av-x "+(s||'')+"'><img src='"+a.img+"' alt='' loading='lazy' decoding='async'></span>":"<span class='av-x "+(s||'')+"' style='background:"+a.c+"'>"+a.i+"</span>";}
+function url(p){return 'article.html?p='+p.s;}
+function cover(p){return "<div class='cover "+p.cv+"'><span class='k'>"+p.k+"</span><span class='t'>"+p.t+"</span></div>";}
+var tabs=[['all','All',P.length]].concat(Object.keys(C).map(function(k){return [k,C[k],P.filter(function(p){return p.c===k}).length];}));
+var ce=document.getElementById('cats');
+ce.innerHTML=tabs.map(function(t){return "<button data-c='"+t[0]+"'"+(t[0]==='all'?" class='on'":"")+">"+t[1]+"<span>"+t[2]+"</span></button>";}).join('');
+ce.querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;ce.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});draw();};});
+function draw(){
+var list=P.filter(function(p){return (cat==='all'||p.c===cat)&&(!q||(p.h+' '+p.x+' '+A[p.a].n).toLowerCase().indexOf(q)>-1);});
+var f=list[0],rest=list.slice(1);
+document.getElementById('feat').innerHTML=f?"<a class='fp' href='"+url(f)+"'>"+cover(f)+"<div><span class='tag b'>"+C[f.c]+"</span><h2>"+f.h+"</h2><p>"+f.x+"</p><div class='byl'>"+av(f.a,'s')+"<b>"+A[f.a].n+"</b><span>·</span><span>"+f.d+"</span><span>·</span><span>"+f.m+" min read</span></div></div></a>":'';
+document.getElementById('posts').innerHTML=rest.map(function(p){return "<a class='post' href='"+url(p)+"'>"+cover(p)+"<div class='meta'><span>"+C[p.c]+"</span><span>·</span><span>"+p.m+" min</span></div><h3>"+p.h+"</h3><p>"+p.x+"</p><div class='byl' style='margin-top:4px'>"+av(p.a,'s')+"<span>"+A[p.a].n+"</span></div></a>";}).join('');
+document.getElementById('empty').classList.toggle('show',!list.length);}
+var qi=document.getElementById('q');qi.oninput=function(){q=qi.value.trim().toLowerCase();draw();};
+document.addEventListener('keydown',function(e){if(e.key==='/'&&document.activeElement!==qi){e.preventDefault();qi.focus();}});
+draw();})();
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+</body>
+</html>

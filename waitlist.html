@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style id="nv-guard">html{background:#fff}body{opacity:0;animation:nvShow .01s .25s forwards}@keyframes nvShow{to{opacity:1}}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the waitlist · Nelview</title>
+<meta name="description" content="Apply to join the Nelview private beta.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/site.css">
+<link rel="stylesheet" href="src/styles/pages.css">
+<link rel="stylesheet" href="src/styles/color.css">
+<style>
+.wl-hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.wl-hdr .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.wl-hdr .back{display:inline-flex;gap:6px;align-items:center;font-size:14.5px;font-weight:500;color:var(--ink-2)}.wl-hdr .back:hover{color:var(--ink)}
+.wl-hdr .back svg{transform:rotate(180deg)}
+.wl{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start;padding-top:56px;padding-bottom:96px}
+.wl-side{position:sticky;top:96px;background:var(--forest);color:#fff;border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+.wl-side .photo{border-radius:0;aspect-ratio:16/10}.wl-side .photo img{object-position:center 30%}
+.wl-side .in{padding:32px;display:flex;flex-direction:column;gap:22px}
+.wl-side h1{font-size:clamp(32px,3.4vw,44px);letter-spacing:-.045em;line-height:1.02;font-weight:680}
+.wl-side h1 span{color:var(--sun)}
+.wl-side .lead{color:#C9D8CE;font-size:16px}
+.wl-badge{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:rgba(242,165,22,.14);color:var(--sun);font-size:13px;font-weight:560;padding:6px 12px 6px 10px;border-radius:999px}
+.wl-badge i{width:7px;height:7px;border-radius:50%;background:var(--sun);animation:wlb 2s infinite}
+@keyframes wlb{0%{box-shadow:0 0 0 0 rgba(242,165,22,.5)}70%{box-shadow:0 0 0 7px rgba(242,165,22,0)}100%{box-shadow:0 0 0 0 rgba(242,165,22,0)}}
+.perks{display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid #1E5C43}
+.perk{display:flex;gap:12px;align-items:flex-start}
+.perk .ico{background:var(--forest-2);color:var(--sun);width:34px;height:34px}
+.perk b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}.perk span{font-size:13.5px;color:#B9CBBF;line-height:1.45}
+.wl-main h2.t{font-size:clamp(30px,3vw,40px);letter-spacing:-.045em;line-height:1.05}
+.wl-main>.lead{margin-top:12px;font-size:16.5px}
+.wsteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:32px 0 24px}
+.wsteps div{display:flex;flex-direction:column;gap:10px;font-size:13.5px;font-weight:550;color:var(--ink-3)}
+.wsteps div::before{content:"";height:4px;border-radius:99px;background:var(--bg-3);transition:background .25s}
+.wsteps div.on{color:var(--ink)}.wsteps div.on::before{background:var(--blue)}
+.wsteps div.dn{color:var(--ink-2)}.wsteps div.dn::before{background:var(--blue-2)}
+.wsteps small{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-weight:500;display:block}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 1px 2px rgba(10,13,20,.03),0 24px 60px -32px rgba(10,13,20,.18)}
+.fcard h3{font-size:22px;letter-spacing:-.03em}.fcard .sub{font-size:14.5px;color:var(--ink-3);margin-top:4px}
+.wfp{display:none;flex-direction:column;gap:18px}.wfp.on{display:flex}
+.wfp .hd{padding-bottom:18px;border-bottom:1px solid var(--line)}
+.fld label .rq{color:var(--blue-tx)}.fld label .op{font-weight:450;color:var(--ink-3);font-size:13px;margin-left:6px}
+.fld .h{font-size:13px;color:var(--ink-3)}
+.fld select{appearance:none;background:#fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 14px center;padding-right:40px;cursor:pointer}
+.wfp .chips .chip{font-size:14px}
+.wfp .ffoot{margin-top:4px}
+.hp{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+.ok{display:none;flex-direction:column;gap:22px;text-align:center;align-items:center}.ok.on{display:flex;animation:fadeUp .4s ease}
+.ok .mk{width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px var(--blue-soft)}
+.ok h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.04em;line-height:1.1}
+.ok>p{color:var(--ink-2);max-width:44ch}
+.pos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%}
+.pos div{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:left}
+.pos b{display:block;font-size:26px;letter-spacing:-.04em;font-weight:680;color:var(--blue-tx)}.pos span{font-size:13px;color:var(--ink-3)}
+.pos .rf b{font-family:var(--mono);font-size:16px;letter-spacing:0;color:var(--ink);padding-top:8px}
+.ok .tl{width:100%;margin-top:0}
+.share-b{width:100%;background:var(--sun-soft);border-radius:14px;padding:16px;text-align:left;display:flex;flex-direction:column;gap:10px}
+.share-b p{font-size:14.5px;color:var(--ink-2)}
+.share-b .inline-form{max-width:none}.share-b .inline-form input{font-family:var(--mono);font-size:13.5px;color:var(--ink-2)}
+@media (max-width:980px){.wl{grid-template-columns:minmax(0,1fr);gap:32px;padding-top:32px}.wl-side{position:static}.wl-side .photo{display:none}}
+@media (max-width:640px){.fcard{padding:22px}.wsteps small{display:none}.pos{grid-template-columns:minmax(0,1fr)}.ffoot{flex-wrap:wrap}.ffoot .btn-p{flex:1}}
+.wl-load{display:inline-block;min-width:120px;height:1em;border-radius:6px;background:linear-gradient(90deg,#E7EAED 25%,#F3F4F6 50%,#E7EAED 75%);background-size:200% 100%;animation:wlSh 1.2s linear infinite;vertical-align:middle}@keyframes wlSh{to{background-position:-200% 0}}.wl-meta{margin:10px 0 0;font-size:13px;color:#6B7280;text-align:center}.wl-meta:empty{display:none}
+</style>
+</head>
+<body data-page="waitlist">
+<header class="wl-hdr"><div class="wrap"><a class="brand" href="index.html"><span class="mk" id="wlLogo"></span>Nelview</a><a class="back" href="index.html"><span data-ic="arrow" data-s="15"></span>Back to site</a></div></header>
+<main class="wrap wl" data-screen-label="Waitlist">
+<aside class="wl-side">
+<div class="photo"><img src="assets/story/library.png" alt="Student writing in a university library" decoding="async" width="864" height="1184" fetchpriority="high"></div>
+<div class="in">
+<span class="wl-badge"><i></i>Private beta · limited cohort</span>
+<h1>Join the Nelview <span>waitlist.</span></h1>
+<p class="lead">Be among the first researchers to get supervisor-level feedback before you submit, and help shape what we build.</p>
+<div class="perks">
+<div class="perk"><span class="ico" data-ic="star" data-s="16"></span><div><b>Free during beta</b><span>Full access to the review engine while we build.</span></div></div>
+<div class="perk"><span class="ico" data-ic="lock" data-s="16"></span><div><b>Founding-member pricing</b><span>Your first 3 months at our lowest rate when we launch.</span></div></div>
+<div class="perk"><span class="ico" data-ic="users" data-s="16"></span><div><b>Priority expert reviews</b><span>First access to our human reviewer network.</span></div></div>
+<div class="perk"><span class="ico" data-ic="heart" data-s="16"></span><div><b>A direct line to the team</b><span>Your feedback decides what ships next.</span></div></div>
+</div>
+</div>
+</aside>
+
+<section class="wl-main">
+<h2 class="t" id="wlTitle">Apply in under two minutes.</h2>
+<p class="lead" id="wlLead">We review applications every week and email selected applicants as spots open.</p>
+<div class="wsteps" id="wsteps"><div class="on"><small>01</small>About you</div><div><small>02</small>Your research</div><div><small>03</small>Finish up</div></div>
+<div class="fcard">
+
+<div class="wfp on" id="fp1">
+<div class="hd"><h3>Tell us about yourself</h3><p class="sub">We use this to match you to the right beta cohort.</p></div>
+<div class="fld"><label for="f_name">Full name <span class="rq">*</span></label><input id="f_name" placeholder="Dr. Amara Okafor" autocomplete="name"></div>
+<div class="hp" aria-hidden="true"><label>Company website</label><input id="f_company_website" type="text" tabindex="-1" autocomplete="off"></div>
+<div class="fld"><label for="f_email">Email address <span class="rq">*</span></label><input id="f_email" type="email" placeholder="you@university.edu" autocomplete="email"><span class="h">Use your academic email if you have one. It helps us prioritise.</span></div>
+<div class="form"><div class="two">
+<div class="fld"><label for="f_country">Country <span class="rq">*</span></label><select id="f_country"><option value="">Select…</option><option>Ghana</option><option>Nigeria</option><option>Cameroon</option><option>Kenya</option><option>South Africa</option><option>Senegal</option><option>Côte d'Ivoire</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Egypt</option><option>United States</option><option>United Kingdom</option><option>Other</option></select></div>
+<div class="fld"><label for="f_role">I am a… <span class="rq">*</span></label><select id="f_role"><option value="">Select…</option><option>Undergraduate / final-year student</option><option>Master's researcher</option><option>PhD researcher</option><option>Early-career researcher</option><option>Professor / supervisor</option><option>Reviewer / consultant</option><option>Institution / research organisation</option></select></div>
+</div></div>
+<div class="ferr" id="e1">Please fill in all required fields with a valid email.</div>
+<div class="ffoot"><span class="kicker-num">Step 1 of 3</span><button class="btn btn-p" type="button" id="n1">Continue<span data-ic="arrow" data-s="16"></span></button></div>
+</div>
+
+<div class="wfp" id="fp2">
+<div class="hd"><h3>Your research</h3><p class="sub">Help us understand what you're working on.</p></div>
+<div class="fld"><label for="f_inst">Institution or organisation <span class="rq">*</span></label><input id="f_inst" placeholder="University of Cape Coast"></div>
+<div class="fld"><label>Primary research field <span class="rq">*</span><span class="op">Pick any that apply</span></label><div class="chips" id="fields"><button type="button" class="chip">Life Sciences</button><button type="button" class="chip">Medicine &amp; Health</button><button type="button" class="chip">Engineering</button><button type="button" class="chip">Computer Science</button><button type="button" class="chip">Social Sciences</button><button type="button" class="chip">Physical Sciences</button><button type="button" class="chip">Agriculture</button><button type="button" class="chip">Humanities</button><button type="button" class="chip">Other</button></div></div>
+<div class="fld"><label>What would you like reviewed?<span class="op">Optional</span></label><div class="chips" id="needs"><button type="button" class="chip">Journal manuscript</button><button type="button" class="chip">Grant proposal</button><button type="button" class="chip">Thesis / dissertation</button><button type="button" class="chip">Research proposal</button><button type="button" class="chip">Conference abstract</button></div></div>
+<div class="fld"><label for="f_supervise">Do you supervise research students?<span class="op">Optional</span></label><select id="f_supervise"><option value="">Select…</option><option>No, not currently</option><option>Yes, Master's students</option><option>Yes, PhD students</option><option>Yes, both</option></select></div>
+<div class="ferr" id="e2">Please add your institution and at least one research field.</div>
+<div class="ffoot"><button class="btn btn-g" type="button" id="b1">Back</button><button class="btn btn-p" type="button" id="n2">Continue<span data-ic="arrow" data-s="16"></span></button></div>
+</div>
+
+<div class="wfp" id="fp3">
+<div class="hd"><h3>Almost done</h3><p class="sub">One last thing and you're in the queue.</p></div>
+<div class="fld"><label for="f_about">What are you working on right now?<span class="op">Optional</span></label><textarea id="f_about" placeholder="e.g. My final-year thesis, or a manuscript heading to a journal."></textarea></div>
+<div class="fld"><label for="f_ref">How did you hear about Nelview?<span class="op">Optional</span></label><select id="f_ref"><option value="">Select…</option><option>A colleague or supervisor</option><option>LinkedIn</option><option>University or department</option><option>A conference or event</option><option>Search</option><option>Other</option></select></div>
+<label class="chk"><input type="checkbox" id="f_agree"><span>Contact me about beta access. My details are only used to manage the beta and are never sold. <a href="privacy.html">Privacy policy</a></span></label>
+<div class="ferr" id="e3">Please confirm so we can contact you about the beta.</div>
+<div class="ffoot"><button class="btn btn-g" type="button" id="b2">Back</button><button class="btn btn-p" type="button" id="go">Join the waitlist<span data-ic="arrow" data-s="16"></span></button></div>
+</div>
+
+<div class="ok" id="ok">
+<span class="mk" data-ic="check" data-s="28"></span>
+<h3>You're on the waitlist.</h3>
+<p>Thanks for applying. We're onboarding a limited cohort and will email you the moment a spot opens.</p>
+<div class="pos"><div><b id="wlNum">#—</b><span>Your place in line</span></div><div class="rf"><b id="refno">—</b><span>Application reference</span></div></div><p class="wl-meta" id="wlMeta"></p>
+<div class="tl" style="text-align:left"><div class="dn"><i>1</i><div><b>You applied</b><span>We've got your details.</span></div></div><div><i>2</i><div><b>We review weekly</b><span>Our team reads every application.</span></div></div><div><i>3</i><div><b>You get an invite</b><span>Run your first review free and keep founding-member pricing.</span></div></div></div>
+<div class="share-b"><p><b>Move up the list.</b> Share Nelview with a fellow researcher.</p><div class="inline-form"><input readonly value="nelview.com/beta?ref=you" id="refLink"><button class="btn btn-p btn-sm" type="button" id="copy">Copy link</button></div></div>
+<div class="row" style="justify-content:center"><a class="btn btn-g" href="index.html">Back to Nelview</a><a class="btn btn-g" href="https://www.linkedin.com/showcase/nelview/" target="_blank" rel="noopener">Follow on LinkedIn</a></div>
+</div>
+
+</div>
+<p class="muted" style="font-size:13.5px;margin-top:16px;display:flex;gap:6px;align-items:center" id="nospam"><span data-ic="lock" data-s="14"></span>No spam. We only email you about your application.</p>
+</section>
+</main>
+<script src="js/site.js"></script>
+<script src="js/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script defer src="js/motion.js"></script>
+<script>
+(function(){
+var P="M18.38,11.47c-.73.73-1.18,1.75-1.16,2.86.03,2.18,1.89,3.9,4.08,3.9h5.19s.02,0,.02.02v3.98c0,2.36-1.91,4.27-4.27,4.27h-5s-.02,0-.02-.02v-1.520c0-1.09,0-2.77-.27-3.75-.59-2.16-2.72-2.68-3.83-2.67-2.18.03-4.44,1.75-3.820,6.53v1.41s0,.02-.02.02h-5c-2.36,0-4.27-1.91-4.27-4.27v-3.98s0-.02.02-.02h5.53c1.09,0,2.08-.45,2.8-1.16.73-.73,1.18-1.75,1.16-2.86-.03-2.18-1.89-3.9-4.07-3.9H.02s-.02,0-.02-.02v-6.02C0,1.91,1.91,0,4.27,0h5s.02,0,.02.02v3.88c0,1.09.45,2.08,1.16,2.8.73.73,1.75,1.18,2.86,1.16,2.18-.03,3.9-1.89,3.9-4.08V.02s0-.02.02-.02h5c2.36,0,4.27,1.91,4.27,4.27v6.020s0,.02-.02.02h-5.31c-1.09,0-2.08.45-2.8,1.16Z";
+var D=[[13.25,3.3],[13.25,22.83],[22.43,14.09],[4.22,14.09]];
+document.getElementById('wlLogo').innerHTML="<svg viewBox='0 0 26.5 26.51'><path fill='#14231B' d='"+P+"'/>"+D.map(function(d){return "<circle fill='#14231B' cx='"+d[0]+"' cy='"+d[1]+"' r='1.44'/>";}).join('')+"</svg>";
+function $(i){return document.getElementById(i)}
+function v(i){var e=$(i);return e?(e.value||'').trim():''}
+function err(i,on){$(i).classList.toggle('show',on)}
+try{var qe=sessionStorage.getItem('nelview_prefill_email')||'';if(qe){sessionStorage.removeItem('nelview_prefill_email');}if(!qe)qe=new URLSearchParams(location.search).get('email')||'';if(/^\S+@\S+$/.test(qe))$('f_email').value=qe;if(/[?&]email=/i.test(location.search)){var u=new URL(location.href);u.searchParams.delete('email');history.replaceState(null,'',u.pathname+u.search+u.hash);}}catch(e){}
+var refBy='';try{var rp=new URLSearchParams(location.search).get('ref');if(rp){refBy=rp;localStorage.setItem('nelview_ref',rp)}else refBy=localStorage.getItem('nelview_ref')||''}catch(e){}
+['fields','needs'].forEach(function(g){$(g).addEventListener('click',function(e){var c=e.target.closest('.chip');if(c){c.classList.toggle('on');err('e2',false)}})});
+var st=[].slice.call(document.querySelectorAll('#wsteps>div'));
+function go(n){for(var i=1;i<=3;i++){$('fp'+i).classList.toggle('on',i===n);st[i-1].classList.toggle('on',i===n);st[i-1].classList.toggle('dn',i<n)}window.scrollTo({top:0,behavior:'smooth'})}
+$('n1').onclick=function(){var ok=v('f_name')&&/^\S+@\S+\.\S+$/.test(v('f_email'))&&v('f_country')&&v('f_role');err('e1',!ok);if(ok)go(2)};
+$('b1').onclick=function(){go(1)};
+$('n2').onclick=function(){var ok=v('f_inst')&&document.querySelectorAll('#fields .chip.on').length>0;err('e2',!ok);if(ok)go(3)};
+$('b2').onclick=function(){go(2)};
+try{var q=new URLSearchParams(location.search).get('ref');if(q)localStorage.setItem('nelview_ref_by',q)}catch(e){}
+var EP='https://script.google.com/macros/s/AKfycbyhkInKg7BWv6gckVt6lAJSW2_RvRkkouS_tDN9ZnFP7cJ3to7fR-JWU3L9ljfU-We-hQ/exec';
+function chips(g){return [].map.call(document.querySelectorAll('#'+g+' .chip.on'),function(c){return c.textContent}).join('; ')}
+$('go').onclick=function(){
+var ok=$('f_agree').checked;err('e3',!ok);if(!ok)return;
+var rec={submitted_at:new Date().toISOString(),stage:'Full application',name:v('f_name'),email:v('f_email'),country:v('f_country'),role:v('f_role'),institution:v('f_inst'),fields:chips('fields'),reviews:chips('needs'),supervises:v('f_supervise'),working_on:v('f_about'),heard:v('f_ref'),referred_by:refBy,hp:v('f_company_website')};
+var inRef=(new URLSearchParams(location.search).get('ref')||localStorage.getItem('nelview_ref_by')||'').toLowerCase().replace(/[^a-z0-9]/g,'');if(inRef&&!rec.referred_by)rec.referred_by=inRef;
+[$('wlNum'),$('refno')].forEach(function(e){e.textContent='';e.classList.add('wl-load')});$('refLink').value='Generating your link…';
+function paint(d){[$('wlNum'),$('refno')].forEach(function(e){e.classList.remove('wl-load')});
+if(d&&d.ok&&d.position){$('wlNum').textContent='#'+Number(d.position).toLocaleString();$('refno').textContent=d.reference||'—';$('refLink').value='nelview.com/beta?ref='+(d.ref_code||'');
+try{localStorage.setItem('nelview_beta',JSON.stringify({ref_code:d.ref_code,reference:d.reference}))}catch(e){}
+$('wlMeta').textContent=d.returning?'You already applied, so here\u2019s your current spot.':(d.referrals?d.referrals+' referral'+(d.referrals>1?'s':'')+' so far':'');poll(d.ref_code)}
+else{var K='nelview_beta_ref',r=localStorage.getItem(K)||'NV-BETA-'+Math.floor(100000+Math.random()*900000);try{localStorage.setItem(K,r)}catch(e){}$('refno').textContent=r;var fn=(v('f_name').split(' ')[0]||'you').toLowerCase().replace(/[^a-z]/g,'')||'you';$('refLink').value='nelview.com/beta?ref='+fn;$('wlNum').textContent='#…';$('wlMeta').textContent='Updating live once your spot is confirmed.';fetch(EP).then(function(x){return x.json()}).then(function(c){$('wlNum').textContent='#'+Math.max(1,c.count||0).toLocaleString()}).catch(function(){$('wlNum').textContent='#1'})}}
+function poll(code){if(!code)return;clearInterval(window.__wlP);window.__wlP=setInterval(function(){if(document.hidden)return;fetch(EP+'?ref='+encodeURIComponent(code)).then(function(x){return x.json()}).then(function(d){if(d&&d.ok&&d.position){$('wlNum').textContent='#'+Number(d.position).toLocaleString();$('wlMeta').textContent=d.referrals?d.referrals+' referral'+(d.referrals>1?'s':'')+' so far \u00b7 updated live':'Updated live'}}).catch(function(){})},20000)}
+if(rec.hp){paint(null)}else{fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(rec)}).then(function(x){return x.json()}).then(paint).catch(function(){paint(null)})}
+$('fp3').classList.remove('on');st.forEach(function(s){s.classList.remove('on');s.classList.add('dn')});$('ok').classList.add('on');$('nospam').style.display='none';
+$('wlTitle').textContent='Welcome aboard.';$('wlLead').textContent='Here\u2019s what happens next.';window.scrollTo({top:0,behavior:'smooth'});
+};
+$('copy').onclick=function(){var i=$('refLink');i.select();try{navigator.clipboard.writeText(i.value)}catch(e){}var b=this;b.textContent='Copied';setTimeout(function(){b.textContent='Copy link'},1800)};
+})();
+</script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1BB35C"></rect><text x="50" y="66" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#fff">N</text></svg></template>
+</body>
+</html>
